@@ -31,8 +31,6 @@ public class Medicine {
     private String origin;//产地
 
     //set 与 get 方法
-
-
     public String getCoding() {
         return coding;
     }
@@ -226,7 +224,7 @@ public class Medicine {
     }
 
     //成员方法
-    public void readCSV(String coding) throws IOException {
+    public boolean readCSV(String coding) throws IOException {
         String item[] = new String[25];
         boolean find = false;
         BufferedReader reader = new BufferedReader(new FileReader("data/Medicine.csv"));
@@ -240,7 +238,7 @@ public class Medicine {
             }
         }
         if (!find)
-            return;
+            return false;
         this.coding = item[0];
         this.ChineseName = item[1];
         this.EnglishName = item[2];
@@ -265,5 +263,6 @@ public class Medicine {
         this.nationalCatelogCode = item[21];
         this.limitUsage = item[22];
         this.origin = item[23];
+        return true;
     }
 }

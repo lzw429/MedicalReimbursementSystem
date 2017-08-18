@@ -49,6 +49,32 @@ public class BasicMedicalInformationGUI {
         frame.setVisible(true);
     }
 
+    public void init() {
+        ChineseName.setText("");
+        EnglishName.setText("");
+        chargeCategory.setSelectedIndex(0);
+        prescriptionMark.setSelectedIndex(0);
+        feeLevel.setSelectedIndex(0);
+        dosageUnit.setText("");
+        maximumPrice.setText("");
+        hospitalPreparationSigns.setSelectedIndex(0);
+        needApproval.setSelectedIndex(0);
+        hospitalGrade.setSelectedIndex(0);
+        dosageForm.setText("");
+        frequency.setText("");
+        usage.setText("");
+        unit.setText("");
+        specification.setText("");
+        limitDays.setText("");
+        tradeName.setText("");
+        factory.setText("");
+        ChineseMedicineProspectiveWord.setText("");
+        remarks.setText("");
+        nationalCatelogCode.setText("");
+        limitUsage.setText("");
+        origin.setText("");
+    }
+
     public BasicMedicalInformationGUI() {
 
         //监听器
@@ -102,34 +128,66 @@ public class BasicMedicalInformationGUI {
                     }
                     dosageUnit.setText(data.getDosageUnit());
                     maximumPrice.setText(Double.toString(data.getMaximumPrice()));
-                    if (data.isHospitalPreparationSigns()) hospitalPreparationSigns.setSelectedIndex(1);
+                    if (data.isHospitalPreparationSigns())
+                        hospitalPreparationSigns.setSelectedIndex(1);
                     else hospitalPreparationSigns.setSelectedIndex(2);
+                    if (data.isNeedApproval())
+                        needApproval.setSelectedIndex(1);
+                    else needApproval.setSelectedIndex(2);
+                    switch (data.getHospitalGrade()) {
+                        case 0:
+                            hospitalGrade.setSelectedIndex(1);
+                            break;
 
+                        case 1:
+                            hospitalGrade.setSelectedIndex(2);
+                            break;
 
+                        case 2:
+                            hospitalGrade.setSelectedIndex(3);
+                            break;
+
+                        case 3:
+                            hospitalGrade.setSelectedIndex(4);
+                            break;
+                    }
+                    dosageForm.setText(data.getDosageForm());
+                    frequency.setText(data.getFrequency());
+                    usage.setText(data.getUsage());
+                    unit.setText(data.getUnit());
+                    specification.setText(data.getSpecification());
+                    limitDays.setText(data.getLimitDays());
+                    tradeName.setText(data.getTradeName());
+                    factory.setText(data.getFactory());
+                    ChineseMedicineProspectiveWord.setText(data.getChineseMedicineProspectiveWord());
+                    remarks.setText(data.getRemarks());
+                    nationalCatelogCode.setText(data.getNationalCatelogCode());
+                    limitUsage.setText(data.getLimitUsage());
+                    origin.setText(data.getOrigin());
                 }
-
-        }
-    });
+                
+            }
+        });
 
         addData.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked (MouseEvent e){
-            super.mouseClicked(e);  // 添加按钮被按下
-        }
-    });
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);  // 添加按钮被按下
+            }
+        });
 
         saveData.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked (MouseEvent e){
-            super.mouseClicked(e);  // 保存按钮被按下
-        }
-    });
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);  // 保存按钮被按下
+            }
+        });
 
         deleteData.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked (MouseEvent e){
-            super.mouseClicked(e);  // 删除按钮被按下
-        }
-    });
-}
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);  // 删除按钮被按下
+            }
+        });
+    }
 }
