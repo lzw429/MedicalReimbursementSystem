@@ -228,12 +228,19 @@ public class Medicine {
     //成员方法
     public void readCSV(String coding) throws IOException {
         String item[] = new String[25];
+        boolean find = false;
         BufferedReader reader = new BufferedReader(new FileReader("data/Medicine.csv"));
         reader.readLine();//第一行为标题，跳过
         String line;
         while ((line = reader.readLine()) != null) {
             item = line.split(",");
+            if (item[0].equals(coding)) {
+                find = true;
+                break;
+            }
         }
+        if (!find)
+            return;
         this.coding = item[0];
         this.ChineseName = item[1];
         this.EnglishName = item[2];

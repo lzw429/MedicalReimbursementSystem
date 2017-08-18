@@ -205,6 +205,7 @@
                     <item value="中成药"/>
                     <item value="中草药"/>
                   </model>
+                  <toolTipText value=""/>
                 </properties>
               </component>
               <component id="9bd54" class="javax.swing.JComboBox" binding="prescriptionMark">
