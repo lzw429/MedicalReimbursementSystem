@@ -100,4 +100,5 @@ public class medicine {
     public void setHospitalGrade(int hospitalGrade) {
         this.hospitalGrade = hospitalGrade;
     }
+
 }
