@@ -1,22 +1,21 @@
 package BasicMedicalInformation;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Medicine {
-    private int coding;//药品编码
+    private String coding;//药品编码
     private String ChineseName;//药品名称
     private String EnglishName;//英文名称
-    private int chargeCategory;//收费类别：甲0 乙1 丙2
+    private int chargeCategory;//收费类别：西药0 中成药1 中草药2
     private int prescriptionMark;//处方药标志：处方药0 甲类非处方药1 乙类非处方药2
-    private int feeLevel;//收费项目等级
+    private int feeLevel;//收费项目等级：甲0 乙1 丙2
     private String dosageUnit;//药品剂量单位
-    private int maximumPrice;//最高限价
-    private boolean hospitalPreparationSigns;//院内制剂标志
-    private boolean needApproval;//是否需要审批标志
-    private int hospitalGrade;//医院等级
+    private double maximumPrice;//最高限价（人民币：元）
+    private boolean hospitalPreparationSigns;//院内制剂标志 是1 否0
+    private boolean needApproval;//是否需要审批标志 是1 否0
+    private int hospitalGrade;//医院等级 一级医院0 二级医院1 三级医院2 社区医院3
     private String dosageForm;//剂型
     private String frequency;//使用频次
     private String usage;//用法
@@ -32,11 +31,13 @@ public class Medicine {
     private String origin;//产地
 
     //set 与 get 方法
-    public int getCoding() {
+
+
+    public String getCoding() {
         return coding;
     }
 
-    public void setCoding(int coding) {
+    public void setCoding(String coding) {
         this.coding = coding;
     }
 
@@ -88,11 +89,11 @@ public class Medicine {
         this.dosageUnit = dosageUnit;
     }
 
-    public int getMaximumPrice() {
+    public double getMaximumPrice() {
         return maximumPrice;
     }
 
-    public void setMaximumPrice(int maximumPrice) {
+    public void setMaximumPrice(double maximumPrice) {
         this.maximumPrice = maximumPrice;
     }
 
@@ -225,12 +226,37 @@ public class Medicine {
     }
 
     //成员方法
-    public void readCSV(int coding) throws IOException {
+    public void readCSV(String coding) throws IOException {
+        String item[] = new String[25];
         BufferedReader reader = new BufferedReader(new FileReader("data/Medicine.csv"));
         reader.readLine();//第一行为标题，跳过
-        String line = null;
+        String line;
         while ((line = reader.readLine()) != null) {
-            String item[] = line.split(",");
+            item = line.split(",");
         }
+        this.coding = item[0];
+        this.ChineseName = item[1];
+        this.EnglishName = item[2];
+        this.chargeCategory = Integer.parseInt(item[3]);
+        this.prescriptionMark = Integer.parseInt(item[4]);
+        this.feeLevel = Integer.parseInt(item[5]);
+        this.dosageUnit = item[6];
+        this.maximumPrice = Double.parseDouble(item[7]);
+        this.hospitalPreparationSigns = Integer.parseInt(item[8]) == 1;
+        this.needApproval = Integer.parseInt(item[9]) == 1;
+        this.hospitalGrade = Integer.parseInt(item[10]);
+        this.dosageForm = item[11];
+        this.frequency = item[12];
+        this.usage = item[13];
+        this.unit = item[14];
+        this.specification = item[15];
+        this.limitDays = item[16];
+        this.tradeName = item[17];
+        this.factory = item[18];
+        this.ChineseMedicineProspectiveWord = item[19];
+        this.remarks = item[20];
+        this.nationalCatelogCode = item[21];
+        this.limitUsage = item[22];
+        this.origin = item[23];
     }
 }

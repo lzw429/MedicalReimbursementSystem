@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public class BasicMedicalInformationGUI {
     private JPanel mainpanel;
@@ -37,7 +38,7 @@ public class BasicMedicalInformationGUI {
 
     public BasicMedicalInformationGUI() {
 
-        BasicMedicalInformation.Medicine data = new BasicMedicalInformation.Medicine();
+
 
         //监听器
         inquire.addMouseListener(new MouseAdapter() {
@@ -47,7 +48,12 @@ public class BasicMedicalInformationGUI {
                 // 通过 药品编码 或 药品名称 查询
                 if(!medicineCoding.getText().equals(""))//如果编号非空
                 {
-
+                    BasicMedicalInformation.Medicine data = new BasicMedicalInformation.Medicine();
+                    try {
+                        data.readCSV(medicineCoding.getText());
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
                 }
 
             }
