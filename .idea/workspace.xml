@@ -14,38 +14,31 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="BasicMedicalInformationGUI.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="BasicMedicalInformationGUI.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="55" column="21" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+                <state relative-caret-position="244">
+                  <caret line="71" column="22" lean-forward="false" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#1389#2003#0" expanded="true" />
-                    <element signature="e#2002#2003#0" expanded="true" />
-                    <element signature="e#2039#2209#0" expanded="true" />
-                    <element signature="e#2208#2209#0" expanded="true" />
-                    <element signature="e#2246#2416#0" expanded="true" />
-                    <element signature="e#2415#2416#0" expanded="true" />
-                    <element signature="e#2455#2625#0" expanded="true" />
-                    <element signature="e#2624#2625#0" expanded="true" />
+                    <element signature="e#1852#2632#0" expanded="true" />
+                    <element signature="e#2631#2632#0" expanded="true" />
+                    <element signature="e#2668#2838#0" expanded="true" />
+                    <element signature="e#2837#2838#0" expanded="true" />
+                    <element signature="e#2875#3045#0" expanded="true" />
+                    <element signature="e#3044#3045#0" expanded="true" />
+                    <element signature="e#3084#3254#0" expanded="true" />
+                    <element signature="e#3253#3254#0" expanded="true" />
                   </folding>
                 </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BasicMedicalInformationGUI.form" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.form">
-              <provider selected="true" editor-type-id="ui-designer">
-                <state />
               </provider>
             </entry>
           </file>
           <file leaf-file-name="Medicine.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="124">
-                  <caret line="257" column="44" lean-forward="false" selection-start-line="257" selection-start-column="44" selection-end-line="257" selection-end-column="44" />
+                <state relative-caret-position="131">
+                  <caret line="239" column="0" lean-forward="false" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -57,15 +50,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="Medicine.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3672">
-                  <caret line="230" column="58" lean-forward="false" selection-start-line="230" selection-start-column="58" selection-end-line="230" selection-end-column="58" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
+          <file leaf-file-name="BasicMedicalInformationGUI.form" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.form">
+              <provider selected="true" editor-type-id="ui-designer">
+                <state />
               </provider>
             </entry>
           </file>
@@ -112,8 +100,8 @@
         <option value="$PROJECT_DIR$/src/BasicMedicalInformation/serviceFacilities.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformation.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java" />
-        <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.form" />
+        <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.java" />
       </list>
     </option>
   </component>
@@ -182,9 +170,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propGUI" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="false" />
     <property name="SearchEverywhereHistoryKey" value="catagory&#9;PSI&#9;JAVA://BasicMedicalInformation.treatment#chargeCatagory" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -313,12 +301,12 @@
       <option name="presentableId" value="Default" />
       <updated>1503016820728</updated>
       <workItem from="1503016822830" duration="9556000" />
-      <workItem from="1503035288679" duration="17924000" />
+      <workItem from="1503035288679" duration="18880000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27480000" />
+    <option name="totallyTimeSpent" value="28436000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -333,7 +321,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33175355" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -382,14 +370,14 @@
           <caret line="4" column="36" lean-forward="true" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1389#2003#0" expanded="true" />
-            <element signature="e#2002#2003#0" expanded="true" />
-            <element signature="e#2039#2209#0" expanded="true" />
-            <element signature="e#2208#2209#0" expanded="true" />
-            <element signature="e#2246#2416#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
-            <element signature="e#2455#2625#0" expanded="true" />
-            <element signature="e#2624#2625#0" expanded="true" />
+            <element signature="e#1852#2632#0" expanded="true" />
+            <element signature="e#2631#2632#0" expanded="true" />
+            <element signature="e#2668#2838#0" expanded="true" />
+            <element signature="e#2837#2838#0" expanded="true" />
+            <element signature="e#2875#3045#0" expanded="true" />
+            <element signature="e#3044#3045#0" expanded="true" />
+            <element signature="e#3084#3254#0" expanded="true" />
+            <element signature="e#3253#3254#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -491,10 +479,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/NumberFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="257" column="44" lean-forward="false" selection-start-line="257" selection-start-column="44" selection-end-line="257" selection-end-column="44" />
+        <state relative-caret-position="131">
+          <caret line="239" column="0" lean-forward="false" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -503,25 +504,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="55" column="21" lean-forward="true" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+        <state relative-caret-position="244">
+          <caret line="71" column="22" lean-forward="false" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1389#2003#0" expanded="true" />
-            <element signature="e#2002#2003#0" expanded="true" />
-            <element signature="e#2039#2209#0" expanded="true" />
-            <element signature="e#2208#2209#0" expanded="true" />
-            <element signature="e#2246#2416#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
-            <element signature="e#2455#2625#0" expanded="true" />
-            <element signature="e#2624#2625#0" expanded="true" />
+            <element signature="e#1852#2632#0" expanded="true" />
+            <element signature="e#2631#2632#0" expanded="true" />
+            <element signature="e#2668#2838#0" expanded="true" />
+            <element signature="e#2837#2838#0" expanded="true" />
+            <element signature="e#2875#3045#0" expanded="true" />
+            <element signature="e#3044#3045#0" expanded="true" />
+            <element signature="e#3084#3254#0" expanded="true" />
+            <element signature="e#3253#3254#0" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
       </provider>
     </entry>
   </component>

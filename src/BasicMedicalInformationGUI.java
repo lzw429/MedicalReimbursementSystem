@@ -27,6 +27,19 @@ public class BasicMedicalInformationGUI {
     private JComboBox needApproval;
     private JComboBox hospitalGrade;
     private JComboBox feeLevel;
+    private JTextField dosageForm;
+    private JTextField frequency;
+    private JTextField unit;
+    private JTextField usage;
+    private JTextField specification;
+    private JTextField limitDays;
+    private JTextField tradeName;
+    private JTextField factory;
+    private JTextField ChineseMedicineProspectiveWord;
+    private JTextField remarks;
+    private JTextField nationalCatelogCode;
+    private JTextField limitUsage;
+    private JTextField origin;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("BasicMedicalInformation");
@@ -54,6 +67,9 @@ public class BasicMedicalInformationGUI {
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
+                    ChineseName.setText(data.getChineseName());
+                    EnglishName.setText(data.getEnglishName());
+                    //chargeCategory.
                 }
 
             }
