@@ -1,9 +1,9 @@
 package BasicMedicalInformation;
 
-public class treatment {
+public class Treatment {
     private int coding;//项目编码
     private String name;//项目名称
-    private int chargeCatagory;//收费等级
+    private int chargeCategory;//收费等级
     private int feeLevel;//收费项目等级
     private int hospitalGrade;//医院等级
     private boolean needApproval;//是否需要审批
@@ -28,12 +28,12 @@ public class treatment {
         this.name = name;
     }
 
-    public int getChargeCatagory() {
-        return chargeCatagory;
+    public int getChargeCategory() {
+        return chargeCategory;
     }
 
-    public void setChargeCatagory(int chargeCatagory) {
-        this.chargeCatagory = chargeCatagory;
+    public void setChargeCategory(int chargeCategory) {
+        this.chargeCategory = chargeCategory;
     }
 
     public int getFeeLevel() {

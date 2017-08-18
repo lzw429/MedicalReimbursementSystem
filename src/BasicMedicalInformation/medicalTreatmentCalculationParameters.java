@@ -1,4 +1,4 @@
 package BasicMedicalInformation;
 
-public class medicalTreatmentCalculationParameters {
+public class MedicalTreatmentCalculationParameters {
 }

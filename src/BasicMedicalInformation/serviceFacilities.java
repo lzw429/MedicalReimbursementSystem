@@ -1,6 +1,6 @@
 package BasicMedicalInformation;
 
-public class serviceFacilities {
+public class ServiceFacilities {
     private int coding;//医疗服务设施编码
     private String name;//服务设施名称
     private int chargeCategory;//收费类别

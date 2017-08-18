@@ -2,11 +2,11 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class home {
+public class GUIHome {
     private JPanel mainPanel;
     private JButton BasicMedicalInformation;
 
-    public home() {
+    public GUIHome() {
         BasicMedicalInformation.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

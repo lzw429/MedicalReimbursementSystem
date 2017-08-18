@@ -1,9 +1,9 @@
 package BasicMedicalInformation;
 
-public class diseases {
+public class Diseases {
     private int coding;//疾病编码
     private String name;//疾病名称
-    private int catagory;//疾病种类
+    private int category;//疾病种类
     private boolean isReimbursed;//病种报销标志
     private String remarks;//备注
 
@@ -23,12 +23,12 @@ public class diseases {
         this.name = name;
     }
 
-    public int getCatagory() {
-        return catagory;
+    public int getCategory() {
+        return category;
     }
 
-    public void setCatagory(int catagory) {
-        this.catagory = catagory;
+    public void setCategory(int category) {
+        this.category = category;
     }
 
     public boolean isReimbursed() {
