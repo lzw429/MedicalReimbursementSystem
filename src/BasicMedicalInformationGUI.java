@@ -45,9 +45,9 @@ public class BasicMedicalInformationGUI {
     private JButton reset;
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("BasicMedicalInformation");
+        JFrame frame = new JFrame("BasicMedicalInformationGUI");
         frame.setContentPane(new BasicMedicalInformationGUI().mainpanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
