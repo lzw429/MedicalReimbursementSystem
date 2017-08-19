@@ -10,8 +10,10 @@ public class GUIHome {
         BasicMedicalInformation.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+                super.mouseClicked(e);// 医疗基本信息维护 按钮被按下
+
             }
         });
+
     }
 }
