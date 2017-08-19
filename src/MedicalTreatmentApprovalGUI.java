@@ -17,21 +17,14 @@ public class MedicalTreatmentApprovalGUI {
         inquire.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);//查询 按钮被按下
-
-            }
-        });
-        inquire.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);// 查询 按钮被按下
-
+                BasicInfoGUI.main(new String [10]);
             }
         });
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("MedicalTreatmentApprovalGUI");
+        JFrame frame = new JFrame("医疗待遇审批");
         frame.setContentPane(new MedicalTreatmentApprovalGUI().mainPanel);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();

@@ -43,9 +43,11 @@ public class BasicMedicalInformationGUI {
     private JTextField limitUsage;
     private JTextField origin;
     private JButton reset;
+    private JComboBox comboBox1;
+    private JTextField textField1;
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("BasicMedicalInformationGUI");
+        JFrame frame = new JFrame("医疗基本信息维护");
         frame.setContentPane(new BasicMedicalInformationGUI().mainpanel);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();
