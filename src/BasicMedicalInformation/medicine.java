@@ -265,4 +265,32 @@ public class Medicine {
         this.origin = item[23];
         return true;
     }
+
+    public boolean writeCSV(String coding) {
+        String item[] = new String[25];
+        item[0] = this.coding;
+        item[1] = this.ChineseName;
+        item[2] = this.EnglishName;
+        item[3] = Integer.toString(chargeCategory);
+        item[4] = Integer.toString(prescriptionMark);
+        item[5] = Integer.toString(feeLevel);
+        item[6] = dosageUnit;
+        item[7] = Double.toString(maximumPrice);
+        if (hospitalPreparationSigns)
+            item[8] = "1";
+        else item[8] = "0";
+        if (needApproval)
+            item[9] = "1";
+        else item[9] = "0";
+        item[10] = Integer.toString(hospitalGrade);
+        item[11] = dosageForm;
+        item[12] = frequency;
+        item[13] = usage;
+        item[14] = unit;
+        item[15] = specification;
+        item[16]=limitDays;
+        item[17]=tradeName;
+        //item[18]=
+        return true;
+    }
 }
