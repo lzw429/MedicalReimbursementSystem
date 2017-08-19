@@ -288,8 +288,8 @@ public class Medicine {
         item[13] = usage;
         item[14] = unit;
         item[15] = specification;
-        item[16]=limitDays;
-        item[17]=tradeName;
+        item[16] = limitDays;
+        item[17] = tradeName;
         //item[18]=
         return true;
     }
