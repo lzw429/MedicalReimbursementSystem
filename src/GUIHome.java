@@ -1,3 +1,5 @@
+import BasicInfoGUI.BasicInfoGUI;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -6,6 +8,7 @@ public class GUIHome {
     private JPanel mainPanel;
     private JButton BasicMedicalInformation;
     private JButton medicalTreatmentApproval;
+    private JButton BasicInfo;
 
     public GUIHome() {
         BasicMedicalInformation.addMouseListener(new MouseAdapter() {
@@ -21,6 +24,13 @@ public class GUIHome {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);// 医疗待遇审批 按钮被按下
                 MedicalTreatmentApprovalGUI.main(new String [10]);
+            }
+        });
+        BasicInfo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);// 综合查询 按钮被按下
+                BasicInfoGUI.main(new String[10]);
             }
         });
     }

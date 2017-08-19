@@ -21,6 +21,13 @@ public class MedicalTreatmentApprovalGUI {
 
             }
         });
+        inquire.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);// 查询 按钮被按下
+
+            }
+        });
     }
 
     public static void main(String[] args) {
