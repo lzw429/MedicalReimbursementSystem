@@ -6,8 +6,9 @@ public class CenterReimbursementGUI {
     private JButton IndividualAnnualCost;
     private JTextField textField1;
     private JPanel mainPanel;
-    private JButton 入院信息查询Button;
+    private JButton PersonnelTreatmentInfo;
     private JTextArea textArea1;
+    private JButton MedicalTreatmentApproval;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("医保中心报销");
@@ -22,7 +23,21 @@ public class CenterReimbursementGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);// 人员信息查询 按钮被按下
-
+                IndividualAnnualCostGUI.main(new String[10]);
+            }
+        });
+        MedicalTreatmentApproval.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);// 校验审批信息 按钮被按下
+                MedicalTreatmentApprovalGUI.main(new String[10]);
+            }
+        });
+        PersonnelTreatmentInfo.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);// 入院信息查询 按钮被按下
+                PersonnelTreatmentInfoGUI.main(new String[10]);
             }
         });
     }

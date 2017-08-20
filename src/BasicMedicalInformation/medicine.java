@@ -266,9 +266,11 @@ public class Medicine {
         return true;
     }
 
-    public boolean writeCSV(String coding) {
+    public boolean writeCSV(String coding) throws IOException {
         String item[] = new String[25];
         item[0] = this.coding;
+        if(readCSV(item[0]))//CSV 中已有当前药品
+            return false;
         item[1] = this.ChineseName;
         item[2] = this.EnglishName;
         item[3] = Integer.toString(chargeCategory);
@@ -290,7 +292,13 @@ public class Medicine {
         item[15] = specification;
         item[16] = limitDays;
         item[17] = tradeName;
-        //item[18]=
+        item[18] = factory;
+        item[19] = ChineseMedicineProspectiveWord;
+        item[20] = remarks;
+        item[21] = nationalCatelogCode;
+        item[22] = limitUsage;
+        item[23] = origin;
+
         return true;
     }
 }

@@ -40,7 +40,7 @@
           <text value="个人基本信息/年度累计报销信息/处方明细"/>
         </properties>
       </component>
-      <component id="a23e8" class="javax.swing.JButton" binding="入院信息查询Button" default-binding="true">
+      <component id="a23e8" class="javax.swing.JButton" binding="PersonnelTreatmentInfo">
         <constraints>
           <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -72,7 +72,7 @@
           <text value="打印单据"/>
         </properties>
       </component>
-      <component id="3e23e" class="javax.swing.JButton" default-binding="true">
+      <component id="3e23e" class="javax.swing.JButton" binding="MedicalTreatmentApproval">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

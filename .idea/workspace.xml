@@ -12,34 +12,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CenterReimbursementGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.java">
+      <file leaf-file-name="Medicine.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="12" column="41" lean-forward="false" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-              <folding />
+            <state relative-caret-position="419">
+              <caret line="300" column="0" lean-forward="true" selection-start-line="300" selection-start-column="0" selection-end-line="300" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CenterReimbursementGUI.form" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IndividualAnnualCostGUI.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PersonnelTreatmentInfoGUI.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -88,7 +69,6 @@
         <option value="$PROJECT_DIR$/src/BasicMedicalInformation/medicalTreatmentCalculationParameters.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformation/serviceFacilities.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformation.java" />
-        <option value="$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java" />
         <option value="$PROJECT_DIR$/src/MedicalTreatmentApprovalGUI.form" />
         <option value="$PROJECT_DIR$/src/BasicInfoGUI/BasicInfoGUI.java" />
         <option value="$PROJECT_DIR$/src/BasicInfoGUI/BasicInfoGUI.form" />
@@ -98,7 +78,6 @@
         <option value="$PROJECT_DIR$/src/GUIHome.form" />
         <option value="$PROJECT_DIR$/src/GUIHome.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.java" />
-        <option value="$PROJECT_DIR$/src/CenterReimbursementGUI.java" />
         <option value="$PROJECT_DIR$/src/MedicalTreatmentApprovalGUI.java" />
         <option value="$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.java" />
         <option value="$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.form" />
@@ -107,6 +86,8 @@
         <option value="$PROJECT_DIR$/src/IndividualAnnualCostGUI.form" />
         <option value="$PROJECT_DIR$/src/PrescriptionGUI.form" />
         <option value="$PROJECT_DIR$/src/CenterReimbursementGUI.form" />
+        <option value="$PROJECT_DIR$/src/CenterReimbursementGUI.java" />
+        <option value="$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java" />
       </list>
     </option>
   </component>
@@ -137,6 +118,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -154,18 +136,6 @@
               <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="BasicMedicalInformation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="BasicInfoGUI" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="BasicMedicalInformationGUI" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
@@ -189,28 +159,15 @@
               <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
               <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="MedicalTreatmentApprovalGUI" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="PersonnelTreatmentInfoGUI" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="PrescriptionGUI" type="e9f4de52:FormNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -404,8 +361,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.GUIHome" />
-        <item index="1" class="java.lang.String" itemvalue="Application.CenterReimbursementGUI" />
-        <item index="2" class="java.lang.String" itemvalue="Application.IndividualAnnualCostGUI" />
+        <item index="1" class="java.lang.String" itemvalue="Application.IndividualAnnualCostGUI" />
+        <item index="2" class="java.lang.String" itemvalue="Application.CenterReimbursementGUI" />
         <item index="3" class="java.lang.String" itemvalue="Application.PersonnelTreatmentInfoGUI" />
         <item index="4" class="java.lang.String" itemvalue="Application.BasicInfoGUI" />
       </list>
@@ -429,11 +386,12 @@
       <workItem from="1503109452629" duration="1092000" />
       <workItem from="1503114158022" duration="658000" />
       <workItem from="1503124580640" duration="19989000" />
+      <workItem from="1503228977672" duration="1733000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59430000" />
+    <option name="totallyTimeSpent" value="61163000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -507,6 +465,36 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="12" column="41" lean-forward="false" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+          <folding>
+            <element signature="e#729#964#0" expanded="true" />
+            <element signature="e#963#964#0" expanded="true" />
+            <element signature="e#1017#1256#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#1307#1544#0" expanded="true" />
+            <element signature="e#1543#1544#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3801">
@@ -596,6 +584,7 @@
           <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1543#1777#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -639,10 +628,10 @@
         <state relative-caret-position="126">
           <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
           <folding>
-            <element signature="e#521#522#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-            <element signature="e#597#598#0" expanded="true" />
-            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="false" />
+            <element signature="e#552#553#0" expanded="false" />
+            <element signature="e#597#598#0" expanded="false" />
+            <element signature="e#637#638#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -659,16 +648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="290" column="29" lean-forward="false" selection-start-line="290" selection-start-column="29" selection-end-line="290" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -703,7 +682,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="146.5" y="170.0" />
+          <settings layout="Hierarchic Group" zoom="1.0" x="147.0" y="170.0" />
           <SelectedNodes />
           <Categories />
           <SCOPE>All</SCOPE>
@@ -734,7 +713,7 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.7258382642998028" x="219.1915760869565" y="143.49999999999997" />
+          <settings layout="Hierarchic Group" zoom="0.7258382642998028" x="219.0" y="143.0" />
           <SelectedNodes />
           <Categories />
           <SCOPE>All</SCOPE>
@@ -742,19 +721,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI/Person.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI/Person.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI/Person.java" />
+    <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI/Person.form" />
     <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/MedicalTreatmentCalculationParameters.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -808,8 +776,8 @@
           <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#684#969#0" expanded="true" />
-            <element signature="e#968#969#0" expanded="true" />
+            <element signature="e#684#969#0" expanded="false" />
+            <element signature="e#968#969#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -847,12 +815,9 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" column="41" lean-forward="false" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.java">
@@ -868,14 +833,34 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
+    <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
+    <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="39" column="61" lean-forward="false" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="61" />
+          <folding>
+            <element signature="e#729#964#0" expanded="true" />
+            <element signature="e#963#964#0" expanded="true" />
+            <element signature="e#1017#1256#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#1307#1544#0" expanded="true" />
+            <element signature="e#1543#1544#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="300" column="0" lean-forward="true" selection-start-line="300" selection-start-column="0" selection-end-line="300" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
