@@ -1,6 +1,6 @@
+import com.sun.corba.se.impl.protocol.InfoOnlyServantCacheLocalCRDImpl;
+
 import javax.swing.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -85,6 +85,7 @@ public class BasicMedicalInformationGUI {
         //监听器
         inquire.addMouseListener(new MouseAdapter() {
             private boolean readflag = false;
+
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);  // 查询按钮被按下
                 // 通过 药品编码 或 药品名称 查询
@@ -170,8 +171,7 @@ public class BasicMedicalInformationGUI {
                         nationalCatelogCode.setText(data.getNationalCatelogCode());
                         limitUsage.setText(data.getLimitUsage());
                         origin.setText(data.getOrigin());
-                    }
-                    else // if (!readFlag)
+                    } else // if (!readFlag)
                         init();
                 } else // 查询编码为空
                     init();
@@ -182,6 +182,50 @@ public class BasicMedicalInformationGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);  // 添加按钮被按下
+                boolean writeFlag=true;
+                if (!medicineCoding.getText().equals("")) {
+                    BasicMedicalInformation.Medicine data = new BasicMedicalInformation.Medicine();
+                    data.setCoding(medicineCoding.getText());
+                    data.setChineseName(ChineseName.getText());
+                    data.setEnglishName(EnglishName.getText());
+                    data.setChargeCategory(chargeCategory.getSelectedIndex() - 1);
+                    data.setPrescriptionMark(prescriptionMark.getSelectedIndex() - 1);
+                    data.setFeeLevel(feeLevel.getSelectedIndex() - 1);
+                    data.setDosageUnit(dosageUnit.getText());
+                    data.setMaximumPrice(Double.parseDouble(maximumPrice.getText()));
+                    if (hospitalPreparationSigns.getSelectedIndex() == 1)
+                        data.setHospitalPreparationSigns(true);
+                    else if (hospitalPreparationSigns.getSelectedIndex() == 2)
+                        data.setHospitalPreparationSigns(false);
+                    if (needApproval.getSelectedIndex() == 1)
+                        data.setNeedApproval(true);
+                    else if (needApproval.getSelectedIndex() == 2)
+                        data.setNeedApproval(false);
+                    data.setHospitalGrade(hospitalGrade.getSelectedIndex() - 1);
+                    data.setDosageForm(dosageForm.getText());
+                    data.setFrequency(frequency.getText());
+                    data.setUsage(usage.getText());
+                    data.setUnit(unit.getText());
+                    data.setSpecification(specification.getText());
+                    data.setLimitDays(limitDays.getText());
+                    data.setTradeName(tradeName.getText());
+                    data.setFactory(factory.getText());
+                    data.setChineseMedicineProspectiveWord(ChineseMedicineProspectiveWord.getText());
+                    data.setRemarks(remarks.getText());
+                    data.setNationalCatelogCode(nationalCatelogCode.getText());
+                    data.setLimitUsage(limitUsage.getText());
+                    data.setOrigin(origin.getText());
+                    try {
+                        writeFlag = data.writeCSV(data.getCoding());
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    if (!writeFlag) {
+                        JOptionPane.showMessageDialog(null, "该药品已存在。", "警告", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                } else // 如果coding为空
+                    init();
             }
         });
 
@@ -198,6 +242,7 @@ public class BasicMedicalInformationGUI {
                 super.mouseClicked(e);  // 删除按钮被按下
             }
         });
+
         reset.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {

@@ -1,8 +1,6 @@
 package BasicMedicalInformation;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class Medicine {
     private String coding;//药品编码
@@ -269,7 +267,7 @@ public class Medicine {
     public boolean writeCSV(String coding) throws IOException {
         String item[] = new String[25];
         item[0] = this.coding;
-        if(readCSV(item[0]))//CSV 中已有当前药品
+        if (readCSV(item[0]))//CSV 中已有当前药品
             return false;
         item[1] = this.ChineseName;
         item[2] = this.EnglishName;
@@ -298,7 +296,18 @@ public class Medicine {
         item[21] = nationalCatelogCode;
         item[22] = limitUsage;
         item[23] = origin;
-
+        try {
+            File file = new File("data/Medicine.csv");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+            for (int i = 0; i != 23; ++i) {
+                writer.write(item[i] + ",");
+            }
+            writer.write(item[23]);
+            writer.newLine();
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         return true;
     }
 }
