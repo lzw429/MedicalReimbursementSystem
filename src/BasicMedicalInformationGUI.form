@@ -522,10 +522,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <model>
-                    <item value="编码12101019620104NH；联苯芐唑；单位：支；规格：15g:150mg"/>
-                    <item value="编码12101019620105NH；联苯芐唑；单位：支；规格：15g:150mg"/>
-                  </model>
+                  <model/>
                 </properties>
               </component>
             </children>

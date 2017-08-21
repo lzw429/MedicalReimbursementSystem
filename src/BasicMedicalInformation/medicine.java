@@ -265,6 +265,7 @@ public class Medicine {
         return true;
     }
 
+
     public boolean writeCSV(String coding) throws IOException {
         String item[] = new String[25];
         item[0] = this.coding;
@@ -311,5 +312,9 @@ public class Medicine {
             JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
         }
         return true;
+    }
+
+    public String toString() {
+        return "编码" + this.coding + ";" + this.ChineseName + ";" + "单位：" + this.unit + ";" + "规格：" + this.specification;
     }
 }

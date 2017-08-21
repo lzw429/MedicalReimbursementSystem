@@ -1,13 +1,7 @@
-import com.sun.corba.se.impl.protocol.InfoOnlyServantCacheLocalCRDImpl;
-
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 public class BasicMedicalInformationGUI {
@@ -191,8 +185,9 @@ public class BasicMedicalInformationGUI {
                         JOptionPane.showMessageDialog(null, "未找到该药品", "警告", JOptionPane.WARNING_MESSAGE);
                         init();
                     }
-                } else // 查询编码为空
+                } else // 药品编码为空，尝试通过药品名称查找
                 {
+
                     JOptionPane.showMessageDialog(null, "请键入药品编码", "警告", JOptionPane.WARNING_MESSAGE);
                     init();
                 }
