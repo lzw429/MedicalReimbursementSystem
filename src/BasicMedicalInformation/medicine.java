@@ -1,5 +1,6 @@
 package BasicMedicalInformation;
 
+import javax.swing.*;
 import java.io.*;
 
 public class Medicine {
@@ -307,6 +308,7 @@ public class Medicine {
             writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
         }
         return true;
     }

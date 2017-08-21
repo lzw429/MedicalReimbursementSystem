@@ -1,8 +1,13 @@
 import com.sun.corba.se.impl.protocol.InfoOnlyServantCacheLocalCRDImpl;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 public class BasicMedicalInformationGUI {
@@ -96,6 +101,7 @@ public class BasicMedicalInformationGUI {
                         readflag = data.readCSV(medicineCoding.getText());
                     } catch (IOException e1) {
                         e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读入错误", "警告", JOptionPane.ERROR_MESSAGE);
                     }
                     if (readflag) {
                         ChineseName.setText(data.getChineseName());
@@ -172,17 +178,23 @@ public class BasicMedicalInformationGUI {
                         limitUsage.setText(data.getLimitUsage());
                         origin.setText(data.getOrigin());
                     } else // if (!readFlag)
+                    {
+                        JOptionPane.showMessageDialog(null, "未找到该药品", "警告", JOptionPane.ERROR_MESSAGE);
                         init();
+                    }
                 } else // 查询编码为空
+                {
+                    JOptionPane.showMessageDialog(null, "请键入药品编码", "警告", JOptionPane.ERROR_MESSAGE);
                     init();
+                }
             }
         });
 
         addData.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);  // 添加按钮被按下
-                boolean writeFlag=true;
+                super.mouseClicked(e);  // 添加 按钮被按下
+                boolean writeFlag = true;
                 if (!medicineCoding.getText().equals("")) {
                     BasicMedicalInformation.Medicine data = new BasicMedicalInformation.Medicine();
                     data.setCoding(medicineCoding.getText());
@@ -219,13 +231,17 @@ public class BasicMedicalInformationGUI {
                         writeFlag = data.writeCSV(data.getCoding());
                     } catch (IOException e1) {
                         e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件写出错误", "警告", JOptionPane.ERROR_MESSAGE);
                     }
                     if (!writeFlag) {
-                        JOptionPane.showMessageDialog(null, "该药品已存在。", "警告", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "该药品已存在", "警告", JOptionPane.ERROR_MESSAGE);
                     }
 
                 } else // 如果coding为空
+                {
+                    JOptionPane.showMessageDialog(null, "请键入药品编码", "警告", JOptionPane.ERROR_MESSAGE);
                     init();
+                }
             }
         });
 
@@ -240,6 +256,17 @@ public class BasicMedicalInformationGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);  // 删除按钮被按下
+                //readCSV，先查询，后删除
+                if (!medicineCoding.getText().equals(""))//如果编号非空
+                {
+                    if (JOptionPane.showConfirmDialog(null, "确定删除？", "确认", JOptionPane.YES_NO_OPTION) == 0)//用户点击 确定
+                    {
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "请键入药品编码", "警告", JOptionPane.ERROR_MESSAGE);
+                    init();
+                }
             }
         });
 
@@ -251,5 +278,24 @@ public class BasicMedicalInformationGUI {
                 medicineCoding.setText("");
             }
         });
+
+        medicineCoding.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                init();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                init();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                init();
+            }
+        });
+
     }
 }
+
