@@ -12,8 +12,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IndividualAnnualCostGUI.form" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
+      <file leaf-file-name="BasicInfoGUI.form" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
           </provider>
@@ -97,6 +97,7 @@
         <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.form" />
         <option value="$PROJECT_DIR$/src/IndividualAnnualCostGUI.form" />
+        <option value="$PROJECT_DIR$/src/BasicInfoGUI.form" />
       </list>
     </option>
   </component>
@@ -145,6 +146,12 @@
               <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="BasicMedicalInformation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="BasicInfoGUI" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
@@ -200,6 +207,20 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.GUIHome">
+    <configuration name="BasicInfoGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="BasicInfoGUI" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="ObjectOrientedProgramDesign" />
+      <envs />
+    </configuration>
     <configuration name="BasicMedicalInformationGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="BasicMedicalInformationGUI" />
@@ -245,20 +266,6 @@
     <configuration name="IndividualAnnualCostGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="IndividualAnnualCostGUI" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ObjectOrientedProgramDesign" />
-      <envs />
-    </configuration>
-    <configuration name="PersonnelTreatmentInfoGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="PersonnelTreatmentInfoGUI" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -353,17 +360,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.GUIHome" />
       <item index="1" class="java.lang.String" itemvalue="Application.IndividualAnnualCostGUI" />
-      <item index="2" class="java.lang.String" itemvalue="Application.PersonnelTreatmentInfoGUI" />
-      <item index="3" class="java.lang.String" itemvalue="Application.CenterReimbursementGUI" />
-      <item index="4" class="java.lang.String" itemvalue="Application.BasicMedicalInformationGUI" />
+      <item index="2" class="java.lang.String" itemvalue="Application.CenterReimbursementGUI" />
+      <item index="3" class="java.lang.String" itemvalue="Application.BasicMedicalInformationGUI" />
+      <item index="4" class="java.lang.String" itemvalue="Application.BasicInfoGUI" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.GUIHome" />
-        <item index="1" class="java.lang.String" itemvalue="Application.BasicMedicalInformationGUI" />
-        <item index="2" class="java.lang.String" itemvalue="Application.IndividualAnnualCostGUI" />
-        <item index="3" class="java.lang.String" itemvalue="Application.CenterReimbursementGUI" />
-        <item index="4" class="java.lang.String" itemvalue="Application.PersonnelTreatmentInfoGUI" />
+        <item index="1" class="java.lang.String" itemvalue="Application.BasicInfoGUI" />
+        <item index="2" class="java.lang.String" itemvalue="Application.BasicMedicalInformationGUI" />
+        <item index="3" class="java.lang.String" itemvalue="Application.IndividualAnnualCostGUI" />
+        <item index="4" class="java.lang.String" itemvalue="Application.CenterReimbursementGUI" />
       </list>
     </recent_temporary>
   </component>
@@ -387,12 +394,12 @@
       <workItem from="1503124580640" duration="19989000" />
       <workItem from="1503228977672" duration="1733000" />
       <workItem from="1503275153777" duration="12040000" />
-      <workItem from="1503296826097" duration="4131000" />
+      <workItem from="1503296826097" duration="6191000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77334000" />
+    <option name="totallyTimeSpent" value="79394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -823,11 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -918,6 +920,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
