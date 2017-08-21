@@ -12,38 +12,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Medicine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1551">
-              <caret line="292" column="20" lean-forward="false" selection-start-line="292" selection-start-column="20" selection-end-line="292" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BasicMedicalInformationGUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="188" column="21" lean-forward="false" selection-start-line="188" selection-start-column="21" selection-end-line="188" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#8196#11436#0" expanded="true" />
-                <element signature="e#11435#11436#0" expanded="true" />
-                <element signature="e#11684#12226#0" expanded="true" />
-                <element signature="e#12225#12226#0" expanded="true" />
-                <element signature="e#12261#12499#0" expanded="true" />
-                <element signature="e#12498#12499#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BasicMedicalInformationGUI.form" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.form">
+      <file leaf-file-name="IndividualAnnualCostGUI.form" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
           </provider>
@@ -115,7 +85,6 @@
         <option value="$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.form" />
         <option value="$PROJECT_DIR$/src/PrescriptionGUI.java" />
         <option value="$PROJECT_DIR$/src/IndividualAnnualCostGUI.java" />
-        <option value="$PROJECT_DIR$/src/IndividualAnnualCostGUI.form" />
         <option value="$PROJECT_DIR$/src/PrescriptionGUI.form" />
         <option value="$PROJECT_DIR$/src/CenterReimbursementGUI.form" />
         <option value="$PROJECT_DIR$/src/CenterReimbursementGUI.java" />
@@ -127,6 +96,7 @@
         <option value="$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.form" />
+        <option value="$PROJECT_DIR$/src/IndividualAnnualCostGUI.form" />
       </list>
     </option>
   </component>
@@ -137,8 +107,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="155" />
-    <option name="y" value="-15" />
+    <option name="x" value="633" />
+    <option name="y" value="88" />
     <option name="width" value="683" />
     <option name="height" value="364" />
   </component>
@@ -187,6 +157,12 @@
               <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GUIHome" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="IndividualAnnualCostGUI" type="e9f4de52:FormNode" />
             </path>
           </expand>
           <select />
@@ -411,16 +387,15 @@
       <workItem from="1503124580640" duration="19989000" />
       <workItem from="1503228977672" duration="1733000" />
       <workItem from="1503275153777" duration="12040000" />
-      <workItem from="1503296826097" duration="1617000" />
+      <workItem from="1503296826097" duration="4131000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74820000" />
+    <option name="totallyTimeSpent" value="77334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -428,10 +403,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3507109" sideWeight="0.5058565" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3349131" sideWeight="0.5087848" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3349131" sideWeight="0.4941435" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3349131" sideWeight="0.49121523" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -853,11 +828,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -932,6 +902,11 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1551">
@@ -942,7 +917,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.form">
+    <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
