@@ -18,7 +18,6 @@ public class BasicMedicalInformationGUI {
     private JPanel serviceFacilities;
     private JPanel fixedMedicalInstitution;
     private JPanel diseases;
-    private JPanel medicalTreatmentCalculationParameters;
     private JTextField medicineCoding;
     private JTextField ChineseName;
     private JTextField EnglishName;
@@ -48,8 +47,7 @@ public class BasicMedicalInformationGUI {
     private JTextField limitUsage;
     private JTextField origin;
     private JButton reset;
-    private JComboBox comboBox1;
-    private JTextField textField1;
+    private JList searchResults;
     private boolean isInquired = false;
 
     public boolean isInquired() {
