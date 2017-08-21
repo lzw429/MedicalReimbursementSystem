@@ -7,7 +7,7 @@ public class CenterReimbursementGUI {
     private JTextField textField1;
     private JPanel mainPanel;
     private JButton PersonnelTreatmentInfo;
-    private JTextArea textArea1;
+    private JTextArea 市基本医疗保险报销医疗费用结算清单TextArea;
     private JButton MedicalTreatmentApproval;
 
     public static void main(String[] args) {

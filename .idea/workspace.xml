@@ -12,8 +12,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BasicInfoGUI.form" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BasicInfoGUI.form" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndividualAnnualCostGUI.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrescriptionGUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PrescriptionGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CenterReimbursementGUI.form" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
           </provider>
@@ -82,11 +106,9 @@
         <option value="$PROJECT_DIR$/src/GUIHome.java" />
         <option value="$PROJECT_DIR$/src/MedicalTreatmentApprovalGUI.java" />
         <option value="$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.java" />
-        <option value="$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.form" />
         <option value="$PROJECT_DIR$/src/PrescriptionGUI.java" />
         <option value="$PROJECT_DIR$/src/IndividualAnnualCostGUI.java" />
         <option value="$PROJECT_DIR$/src/PrescriptionGUI.form" />
-        <option value="$PROJECT_DIR$/src/CenterReimbursementGUI.form" />
         <option value="$PROJECT_DIR$/src/CenterReimbursementGUI.java" />
         <option value="$PROJECT_DIR$/src/WarningGUI.form" />
         <option value="$PROJECT_DIR$/src/InfoWindow.form" />
@@ -96,8 +118,10 @@
         <option value="$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.java" />
         <option value="$PROJECT_DIR$/src/BasicMedicalInformationGUI.form" />
-        <option value="$PROJECT_DIR$/src/IndividualAnnualCostGUI.form" />
         <option value="$PROJECT_DIR$/src/BasicInfoGUI.form" />
+        <option value="$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.form" />
+        <option value="$PROJECT_DIR$/src/IndividualAnnualCostGUI.form" />
+        <option value="$PROJECT_DIR$/src/CenterReimbursementGUI.form" />
       </list>
     </option>
   </component>
@@ -108,9 +132,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="633" />
-    <option name="y" value="88" />
-    <option name="width" value="683" />
+    <option name="x" value="130" />
+    <option name="y" value="-30" />
+    <option name="width" value="968" />
     <option name="height" value="364" />
   </component>
   <component name="ProjectView">
@@ -163,6 +187,12 @@
               <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
               <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="CenterReimbursementGUI" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GUIHome" type="e9f4de52:FormNode" />
             </path>
             <path>
@@ -170,6 +200,12 @@
               <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="IndividualAnnualCostGUI" type="e9f4de52:FormNode" />
+            </path>
+            <path>
+              <item name="ObjectOrientedProgramDesign" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ObjectOrientedProgramDesign" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="PrescriptionGUI" type="e9f4de52:FormNode" />
             </path>
           </expand>
           <select />
@@ -184,9 +220,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propGUI" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="SearchEverywhereHistoryKey" value="annu&#9;FILE&#9;file://C:/Users/舒意恒/Documents/GitHub/ObjectOrientedProgramDesign/src/IndividualAnnualCostGUI.form&#10;zipcode&#9;PSI&#9;JAVA://BasicMedicalInformation.FixedMedicalInstitution#zipcode&#10;catagory&#9;PSI&#9;JAVA://BasicMedicalInformation.treatment#chargeCatagory" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -394,12 +430,12 @@
       <workItem from="1503124580640" duration="19989000" />
       <workItem from="1503228977672" duration="1733000" />
       <workItem from="1503275153777" duration="12040000" />
-      <workItem from="1503296826097" duration="6191000" />
+      <workItem from="1503296826097" duration="11738000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79394000" />
+    <option name="totallyTimeSpent" value="84941000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -417,7 +453,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25183016" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28477305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -475,22 +511,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformationGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5376">
-          <caret line="272" column="33" lean-forward="true" selection-start-line="272" selection-start-column="33" selection-end-line="272" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8196#11436#0" expanded="true" />
-            <element signature="e#11435#11436#0" expanded="true" />
-            <element signature="e#11684#12226#0" expanded="true" />
-            <element signature="e#12225#12226#0" expanded="true" />
-            <element signature="e#12261#12499#0" expanded="true" />
-            <element signature="e#12498#12499#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BasicMedicalInformation/Medicine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -506,12 +526,12 @@
         <state relative-caret-position="210">
           <caret line="12" column="41" lean-forward="false" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
           <folding>
-            <element signature="e#729#964#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-            <element signature="e#1017#1256#0" expanded="false" />
-            <element signature="e#1255#1256#0" expanded="false" />
-            <element signature="e#1307#1544#0" expanded="false" />
-            <element signature="e#1543#1544#0" expanded="false" />
+            <element signature="e#745#980#0" expanded="false" />
+            <element signature="e#979#980#0" expanded="false" />
+            <element signature="e#1033#1272#0" expanded="false" />
+            <element signature="e#1271#1272#0" expanded="false" />
+            <element signature="e#1323#1560#0" expanded="false" />
+            <element signature="e#1559#1560#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -795,31 +815,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="21" column="39" lean-forward="true" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#684#969#0" expanded="false" />
-            <element signature="e#968#969#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PrescriptionGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PrescriptionGUI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/MedicalTreatmentApprovalGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
@@ -830,35 +825,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
           <caret line="39" column="61" lean-forward="false" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="61" />
           <folding>
-            <element signature="e#729#964#0" expanded="false" />
-            <element signature="e#963#964#0" expanded="false" />
-            <element signature="e#1017#1256#0" expanded="false" />
-            <element signature="e#1255#1256#0" expanded="false" />
-            <element signature="e#1307#1544#0" expanded="false" />
-            <element signature="e#1543#1544#0" expanded="false" />
+            <element signature="e#745#980#0" expanded="false" />
+            <element signature="e#979#980#0" expanded="false" />
+            <element signature="e#1033#1272#0" expanded="false" />
+            <element signature="e#1271#1272#0" expanded="false" />
+            <element signature="e#1323#1560#0" expanded="false" />
+            <element signature="e#1559#1560#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -919,12 +896,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/UML全图.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="59" lean-forward="false" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PersonnelTreatmentInfoGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <folding>
+            <element signature="e#968#969#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/IndividualAnnualCostGUI.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BasicInfoGUI.form">
+    <entry file="file://$PROJECT_DIR$/src/PrescriptionGUI.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PrescriptionGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CenterReimbursementGUI.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
