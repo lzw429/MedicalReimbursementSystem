@@ -1,5 +1,11 @@
+import BasicMedicalInformation.Medicine;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.event.ContainerAdapter;
+import java.awt.event.ContainerEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
@@ -42,6 +48,7 @@ public class BasicMedicalInformationGUI {
     private JTextField origin;
     private JButton reset;
     private JList searchResults;
+    private DefaultListModel listModel;
     private boolean isInquired = false;
 
     public boolean isInquired() {
@@ -85,6 +92,8 @@ public class BasicMedicalInformationGUI {
         limitUsage.setText("");
         origin.setText("");
         isInquired = false;
+
+        searchResults.setModel(new DefaultListModel());
     }
 
     public BasicMedicalInformationGUI() {
@@ -106,79 +115,7 @@ public class BasicMedicalInformationGUI {
                         JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
                     }
                     if (readflag) {
-                        ChineseName.setText(data.getChineseName());
-                        EnglishName.setText(data.getEnglishName());
-                        switch (data.getChargeCategory()) {
-                            case 0:
-                                chargeCategory.setSelectedIndex(1);
-                                break;
-                            case 1:
-                                chargeCategory.setSelectedIndex(2);
-                                break;
-                            case 2:
-                                chargeCategory.setSelectedIndex(3);
-                                break;
-                        }
-                        switch (data.getPrescriptionMark()) {
-                            case 0:
-                                prescriptionMark.setSelectedIndex(1);
-                                break;
-                            case 1:
-                                prescriptionMark.setSelectedIndex(2);
-                                break;
-                            case 2:
-                                prescriptionMark.setSelectedIndex(3);
-                                break;
-                        }
-                        switch (data.getFeeLevel()) {
-                            case 0:
-                                feeLevel.setSelectedIndex(1);
-                                break;
-                            case 1:
-                                feeLevel.setSelectedIndex(2);
-                                break;
-                            case 2:
-                                feeLevel.setSelectedIndex(3);
-                                break;
-                        }
-                        dosageUnit.setText(data.getDosageUnit());
-                        maximumPrice.setText(Double.toString(data.getMaximumPrice()));
-                        if (data.isHospitalPreparationSigns())
-                            hospitalPreparationSigns.setSelectedIndex(1);
-                        else hospitalPreparationSigns.setSelectedIndex(2);
-                        if (data.isNeedApproval())
-                            needApproval.setSelectedIndex(1);
-                        else needApproval.setSelectedIndex(2);
-                        switch (data.getHospitalGrade()) {
-                            case 0:
-                                hospitalGrade.setSelectedIndex(1);
-                                break;
-
-                            case 1:
-                                hospitalGrade.setSelectedIndex(2);
-                                break;
-
-                            case 2:
-                                hospitalGrade.setSelectedIndex(3);
-                                break;
-
-                            case 3:
-                                hospitalGrade.setSelectedIndex(4);
-                                break;
-                        }
-                        dosageForm.setText(data.getDosageForm());
-                        frequency.setText(data.getFrequency());
-                        usage.setText(data.getUsage());
-                        unit.setText(data.getUnit());
-                        specification.setText(data.getSpecification());
-                        limitDays.setText(data.getLimitDays());
-                        tradeName.setText(data.getTradeName());
-                        factory.setText(data.getFactory());
-                        ChineseMedicineProspectiveWord.setText(data.getChineseMedicineProspectiveWord());
-                        remarks.setText(data.getRemarks());
-                        nationalCatelogCode.setText(data.getNationalCatelogCode());
-                        limitUsage.setText(data.getLimitUsage());
-                        origin.setText(data.getOrigin());
+                        MedicineToGUI(data);
                         isInquired = true;
                     } else // if (!readFlag)
                     {
@@ -209,19 +146,25 @@ public class BasicMedicalInformationGUI {
                             JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
                         }
                         String line;
+                        listModel = new DefaultListModel();
+                        DefaultListModel emptyListModel = new DefaultListModel<>();
+                        searchResults.setModel(emptyListModel);
                         try {
                             while ((line = reader.readLine()) != null) {
                                 item = line.split(",");
                                 if (item[1].contains(ChineseName.getText()))//判断文本框中的内容是否是item[1]的子串
                                 {
+                                    Medicine medicine = new Medicine();
+                                    medicine.readCSV(item[0]);
+                                    // 展示到界面右侧列表
+                                    listModel.addElement(medicine);
+                                    searchResults.setModel(listModel);
                                 }
                             }
                         } catch (IOException e1) {
                             e1.printStackTrace();
                             JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
                         }
-
-
                     }
 
                 }
@@ -236,43 +179,14 @@ public class BasicMedicalInformationGUI {
                 if (!medicineCoding.getText().equals("")) {
                     try {
                         BasicMedicalInformation.Medicine data = new BasicMedicalInformation.Medicine();
-                        data.setCoding(medicineCoding.getText());
-                        data.setChineseName(ChineseName.getText());
-                        data.setEnglishName(EnglishName.getText());
-                        data.setChargeCategory(chargeCategory.getSelectedIndex() - 1);
-                        data.setPrescriptionMark(prescriptionMark.getSelectedIndex() - 1);
-                        data.setFeeLevel(feeLevel.getSelectedIndex() - 1);
-                        data.setDosageUnit(dosageUnit.getText());
-                        data.setMaximumPrice(Double.parseDouble(maximumPrice.getText()));
-                        if (hospitalPreparationSigns.getSelectedIndex() == 1)
-                            data.setHospitalPreparationSigns(true);
-                        else if (hospitalPreparationSigns.getSelectedIndex() == 2)
-                            data.setHospitalPreparationSigns(false);
-                        if (needApproval.getSelectedIndex() == 1)
-                            data.setNeedApproval(true);
-                        else if (needApproval.getSelectedIndex() == 2)
-                            data.setNeedApproval(false);
-                        data.setHospitalGrade(hospitalGrade.getSelectedIndex() - 1);
-                        data.setDosageForm(dosageForm.getText());
-                        data.setFrequency(frequency.getText());
-                        data.setUsage(usage.getText());
-                        data.setUnit(unit.getText());
-                        data.setSpecification(specification.getText());
-                        data.setLimitDays(limitDays.getText());
-                        data.setTradeName(tradeName.getText());
-                        data.setFactory(factory.getText());
-                        data.setChineseMedicineProspectiveWord(ChineseMedicineProspectiveWord.getText());
-                        data.setRemarks(remarks.getText());
-                        data.setNationalCatelogCode(nationalCatelogCode.getText());
-                        data.setLimitUsage(limitUsage.getText());
-                        data.setOrigin(origin.getText());
+                        GUItoMedicine(data);
                         try {
                             writeFlag = data.writeCSV(data.getCoding());
                         } catch (IOException e1) {
                             e1.printStackTrace();
                             JOptionPane.showMessageDialog(null, "文件写出错误", "错误", JOptionPane.ERROR_MESSAGE);
                         }
-                        if (!writeFlag) {
+                        if (!writeFlag) {// 在writeCSV方法中，coding已存在的药品不会被添加
                             JOptionPane.showMessageDialog(null, "该药品已存在", "警告", JOptionPane.WARNING_MESSAGE);
                         } else {
                             isInquired = true;
@@ -306,7 +220,9 @@ public class BasicMedicalInformationGUI {
                 else {
                     if (JOptionPane.showConfirmDialog(null, "确定删除？", "确认", JOptionPane.YES_NO_OPTION) == 0)//用户点击 确定
                     {
+                        
                     }
+                    //若用户点击“取消”，无需任何动作
                 }
             }
         });
@@ -320,25 +236,141 @@ public class BasicMedicalInformationGUI {
             }
         });
 
-        medicineCoding.getDocument().
+        medicineCoding.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            // 药品编码文本框 内容被修改
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                init();
+            }
 
-                addDocumentListener(new javax.swing.event.DocumentListener() {
-                    @Override
-                    public void insertUpdate(DocumentEvent e) {
-                        init();
-                    }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                init();
+            }
 
-                    @Override
-                    public void removeUpdate(DocumentEvent e) {
-                        init();
-                    }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                init();
+            }
+        });
 
-                    @Override
-                    public void changedUpdate(DocumentEvent e) {
-                        init();
-                    }
-                });
+        searchResults.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) // 列表元素被选中
+            {
+                Medicine data = (Medicine) searchResults.getSelectedValue();
+                MedicineToGUI(data);
+            }
+        });
+    }
 
+    public void MedicineToGUI(Medicine data) {
+        medicineCoding.setText(data.getCoding());
+        ChineseName.setText(data.getChineseName());
+        EnglishName.setText(data.getEnglishName());
+        switch (data.getChargeCategory()) {
+            case 0:
+                chargeCategory.setSelectedIndex(1);
+                break;
+            case 1:
+                chargeCategory.setSelectedIndex(2);
+                break;
+            case 2:
+                chargeCategory.setSelectedIndex(3);
+                break;
+        }
+        switch (data.getPrescriptionMark()) {
+            case 0:
+                prescriptionMark.setSelectedIndex(1);
+                break;
+            case 1:
+                prescriptionMark.setSelectedIndex(2);
+                break;
+            case 2:
+                prescriptionMark.setSelectedIndex(3);
+                break;
+        }
+        switch (data.getFeeLevel()) {
+            case 0:
+                feeLevel.setSelectedIndex(1);
+                break;
+            case 1:
+                feeLevel.setSelectedIndex(2);
+                break;
+            case 2:
+                feeLevel.setSelectedIndex(3);
+                break;
+        }
+        dosageUnit.setText(data.getDosageUnit());
+        maximumPrice.setText(Double.toString(data.getMaximumPrice()));
+        if (data.isHospitalPreparationSigns())
+            hospitalPreparationSigns.setSelectedIndex(1);
+        else hospitalPreparationSigns.setSelectedIndex(2);
+        if (data.isNeedApproval())
+            needApproval.setSelectedIndex(1);
+        else needApproval.setSelectedIndex(2);
+        switch (data.getHospitalGrade()) {
+            case 0:
+                hospitalGrade.setSelectedIndex(1);
+                break;
+
+            case 1:
+                hospitalGrade.setSelectedIndex(2);
+                break;
+
+            case 2:
+                hospitalGrade.setSelectedIndex(3);
+                break;
+
+            case 3:
+                hospitalGrade.setSelectedIndex(4);
+                break;
+        }
+        dosageForm.setText(data.getDosageForm());
+        frequency.setText(data.getFrequency());
+        usage.setText(data.getUsage());
+        unit.setText(data.getUnit());
+        specification.setText(data.getSpecification());
+        limitDays.setText(data.getLimitDays());
+        tradeName.setText(data.getTradeName());
+        factory.setText(data.getFactory());
+        ChineseMedicineProspectiveWord.setText(data.getChineseMedicineProspectiveWord());
+        remarks.setText(data.getRemarks());
+        nationalCatelogCode.setText(data.getNationalCatelogCode());
+        limitUsage.setText(data.getLimitUsage());
+        origin.setText(data.getOrigin());
+    }
+
+    public void GUItoMedicine(Medicine data) {
+        data.setCoding(medicineCoding.getText());
+        data.setChineseName(ChineseName.getText());
+        data.setEnglishName(EnglishName.getText());
+        data.setChargeCategory(chargeCategory.getSelectedIndex() - 1);
+        data.setPrescriptionMark(prescriptionMark.getSelectedIndex() - 1);
+        data.setFeeLevel(feeLevel.getSelectedIndex() - 1);
+        data.setDosageUnit(dosageUnit.getText());
+        data.setMaximumPrice(Double.parseDouble(maximumPrice.getText()));
+        if (hospitalPreparationSigns.getSelectedIndex() == 1)
+            data.setHospitalPreparationSigns(true);
+        else if (hospitalPreparationSigns.getSelectedIndex() == 2)
+            data.setHospitalPreparationSigns(false);
+        if (needApproval.getSelectedIndex() == 1)
+            data.setNeedApproval(true);
+        else if (needApproval.getSelectedIndex() == 2)
+            data.setNeedApproval(false);
+        data.setHospitalGrade(hospitalGrade.getSelectedIndex() - 1);
+        data.setDosageForm(dosageForm.getText());
+        data.setFrequency(frequency.getText());
+        data.setUsage(usage.getText());
+        data.setUnit(unit.getText());
+        data.setSpecification(specification.getText());
+        data.setLimitDays(limitDays.getText());
+        data.setTradeName(tradeName.getText());
+        data.setFactory(factory.getText());
+        data.setChineseMedicineProspectiveWord(ChineseMedicineProspectiveWord.getText());
+        data.setRemarks(remarks.getText());
+        data.setNationalCatelogCode(nationalCatelogCode.getText());
+        data.setLimitUsage(limitUsage.getText());
+        data.setOrigin(origin.getText());
     }
 }
-

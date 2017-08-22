@@ -1,3 +1,4 @@
 coding,ChineseName,EnglishName,chargeCategory,prescriptionMark,feeLevel,dosageUnit,maximumPrice,hospitalPreparationSigns,needApproval,hospitalGrade,dosageForm,frequency,usage,unit,specification,limitDays,tradeName,factory,ChineseMedicineProspectiveWord,remarks,nationalCatelogCode,limitUsage,origin
-0,健胃消食片,Xiaoshi tablets,1,2,2,片,50,0,0,3,片剂,一天三次,口服,每次一片,暂无规格,50天,暂无商品名,暂无药厂名,暂无国药准字,暂无备注,暂无国家目录编码,暂无限制使用范围,暂无产地
+0,健胃消食片1,Xiaoshi tablets,1,2,2,片,50,0,0,3,片剂,一天三次,口服,每次一片,规格1,50天,暂无商品名,暂无药厂名,暂无国药准字,暂无备注,暂无国家目录编码,暂无限制使用范围,暂无产地
 1,布洛芬,BuLuofen,0,0,0,片,100.0,0,0,0,片剂,一天三次,口服,每次一片,暂无规格,50天,暂无商品名,暂无药厂名,暂无国药准字,暂无备注,暂无国家目录编码,暂无限制使用范围,暂无产地
+2,健胃消食片2,Xiaoshi tablets,1,2,2,片,50,0,0,3,片剂,一天三次,口服,每次一片,规格2,50天,暂无商品名,暂无药厂名,暂无国药准字,暂无备注,暂无国家目录编码,暂无限制使用范围,暂无产地

@@ -315,6 +315,6 @@ public class Medicine {
     }
 
     public String toString() {
-        return "编码" + this.coding + ";" + this.ChineseName + ";" + "单位：" + this.unit + ";" + "规格：" + this.specification;
+        return "编码" + this.coding + "；" + this.ChineseName + "；" + "单位：" + this.unit + "；" + "规格：" + this.specification;
     }
 }
