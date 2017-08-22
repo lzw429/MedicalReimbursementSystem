@@ -164,7 +164,7 @@ public class BasicMedicalInformationGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);  // 添加 按钮被按下
                 boolean writeFlag = true;
-                if (!medicineCoding.getText().equals("")) // 如果coding不为空
+                if (isCompleted()) // 如果信息完整
                 {
                     try {
                         BasicMedicalInformation.Medicine data = new BasicMedicalInformation.Medicine();
@@ -183,12 +183,11 @@ public class BasicMedicalInformationGUI {
                             searchResults.setModel(new DefaultListModel());
                         }
                     } catch (NumberFormatException e1) {
-                        JOptionPane.showMessageDialog(null, "请输入完整信息", "警告", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "输入的数字格式有误", "警告", JOptionPane.WARNING_MESSAGE);
                     }
-                } else // 如果coding为空
+                } else  // 如果信息不完整
                 {
-                    JOptionPane.showMessageDialog(null, "请键入药品编码", "警告", JOptionPane.WARNING_MESSAGE);
-                    init();
+                    JOptionPane.showMessageDialog(null, "请输入完整的信息", "警告", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -198,8 +197,8 @@ public class BasicMedicalInformationGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);  // 保存按钮被按下
                 // 添加新数据，删除原数据
-                if (!isInquired)
-                    JOptionPane.showMessageDialog(null, "请修改当前已存在的数据", "警告", JOptionPane.WARNING_MESSAGE);
+                if (!isCompleted())
+                    JOptionPane.showMessageDialog(null, "请输入完整的信息", "警告", JOptionPane.WARNING_MESSAGE);
                 Medicine data;
                 //GUItoMedicine(data);
             }
@@ -398,4 +397,11 @@ public class BasicMedicalInformationGUI {
         data.setLimitUsage(limitUsage.getText());
         data.setOrigin(origin.getText());
     }
+
+    public boolean isCompleted() {
+        if (medicineCoding.getText().equals("") || ChineseName.getText().equals("") || EnglishName.getText().equals("") || dosageUnit.getText().equals("") || maximumPrice.getText().equals("") || chargeCategory.getSelectedIndex() == 0 || prescriptionMark.getSelectedIndex() == 0 || hospitalPreparationSigns.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || feeLevel.getSelectedIndex() == 0 || dosageForm.getText().equals("") || frequency.getText().equals("") || unit.getText().equals("") || usage.getText().equals("") || specification.getText().equals("") || limitDays.getText().equals("") || tradeName.getText().equals("") || factory.getText().equals("") || ChineseMedicineProspectiveWord.getText().equals("") || remarks.getText().equals("") || nationalCatelogCode.getText().equals("") || limitUsage.getText().equals("") || origin.getText().equals(""))
+            return false;
+        return true;
+    }
 }
+
