@@ -208,7 +208,8 @@ public class BasicMedicalInformationGUI {
                 //readCSV，先查询，后删除
                 if (!isInquired)
                     JOptionPane.showMessageDialog(null, "请指定一种药品", "警告", JOptionPane.WARNING_MESSAGE);
-                else {
+                else // if(isInquired)
+                {
                     if (JOptionPane.showConfirmDialog(null, "确定删除？", "确认", JOptionPane.YES_NO_OPTION) == 0)//用户点击 确定
                     {
                         File file = new File("data/Medicine.csv");
@@ -217,9 +218,16 @@ public class BasicMedicalInformationGUI {
                             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
                             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temp)));
                             String line;
+                            String[] item = new String[25];
                             while ((line = reader.readLine()) != null) {
-
+                                item = line.split(",");
+                                if (!item[0].equals(medicineCoding))
+                                    writer.write(line);
                             }
+                            reader.close();
+                            writer.close();
+                            file.delete();
+                            temp.renameTo(file);
                         } catch (FileNotFoundException e1) {
                             JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
                         } catch (IOException e1) {
