@@ -122,25 +122,22 @@ public class BasicMedicalInformationGUI {
                     }
                 } else // 药品编码为空，尝试通过药品名称查找
                 {
-                    // 逐条读取，判断用户输入的名称是不是其子串，如果是则用字符串形式将其表示，展示在列表上；当选中列表的某一项时，执行readCSV
+                    // 逐条读取，判断用户输入的名称是不是其子串，如果是则用toString将其展示在列表上；当选中列表的某一项时，执行readCSV
                     String item[] = new String[25];
                     BufferedReader reader = null;
                     try {
                         reader = new BufferedReader(new FileReader("data/Medicine.csv"));
+                        reader.readLine();//第一行是标题
                     } catch (FileNotFoundException e1) {
                         e1.printStackTrace();
                         JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
-                    }
-                    try {
-                        reader.readLine();//第一行为标题，跳过
                     } catch (IOException e1) {
                         e1.printStackTrace();
                         JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
                     }
                     String line;
                     listModel = new DefaultListModel();
-                    DefaultListModel emptyListModel = new DefaultListModel<>();
-                    searchResults.setModel(emptyListModel);
+                    searchResults.setModel(new DefaultListModel<>());
                     try {
                         while ((line = reader.readLine()) != null) {
                             item = line.split(",");
@@ -167,7 +164,8 @@ public class BasicMedicalInformationGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);  // 添加 按钮被按下
                 boolean writeFlag = true;
-                if (!medicineCoding.getText().equals("")) {
+                if (!medicineCoding.getText().equals("")) // 如果coding不为空
+                {
                     try {
                         BasicMedicalInformation.Medicine data = new BasicMedicalInformation.Medicine();
                         GUItoMedicine(data);
@@ -182,6 +180,7 @@ public class BasicMedicalInformationGUI {
                         } else {
                             isInquired = true;
                             JOptionPane.showMessageDialog(null, "添加药品信息成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+                            searchResults.setModel(new DefaultListModel());
                         }
                     } catch (NumberFormatException e1) {
                         JOptionPane.showMessageDialog(null, "请输入完整信息", "警告", JOptionPane.WARNING_MESSAGE);
@@ -198,6 +197,11 @@ public class BasicMedicalInformationGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);  // 保存按钮被按下
+                // 添加新数据，删除原数据
+                if (!isInquired)
+                    JOptionPane.showMessageDialog(null, "请修改当前已存在的数据", "警告", JOptionPane.WARNING_MESSAGE);
+                Medicine data;
+                //GUItoMedicine(data);
             }
         });
 
@@ -229,6 +233,10 @@ public class BasicMedicalInformationGUI {
                             writer.close();
                             file.delete();
                             temp.renameTo(file);
+                            isInquired = false;
+                            medicineCoding.setText("");
+                            init();
+                            JOptionPane.showMessageDialog(null, "删除成功", "成功", JOptionPane.INFORMATION_MESSAGE);
                         } catch (FileNotFoundException e1) {
                             JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
                         } catch (IOException e1) {
@@ -272,8 +280,9 @@ public class BasicMedicalInformationGUI {
             @Override
             public void valueChanged(ListSelectionEvent e) // 列表元素被选中
             {
-                Medicine data = (Medicine) searchResults.getSelectedValue();
-                MedicineToGUI(data);
+                Medicine data;
+                if ((data = (Medicine) searchResults.getSelectedValue()) != null)
+                    MedicineToGUI(data);
             }
         });
     }

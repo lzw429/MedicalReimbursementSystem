@@ -223,7 +223,9 @@ public class Medicine {
     }
 
     //成员方法
-    public boolean readCSV(String coding) throws IOException {
+    public boolean readCSV(String coding) throws IOException
+    // 从CSV文件中读取到 Mediciine 的实例中
+    {
         String item[] = new String[25];
         boolean find = false;
         BufferedReader reader = new BufferedReader(new FileReader("data/Medicine.csv"));
