@@ -91,15 +91,14 @@ public class BasicMedicalInformationGUI {
         nationalCatelogCode.setText("");
         limitUsage.setText("");
         origin.setText("");
+
         isInquired = false;
 
         searchResults.setModel(new DefaultListModel());
     }
 
     public BasicMedicalInformationGUI() {
-
-        //监听器
-        inquire.addMouseListener(new MouseAdapter() {
+        inquire.addMouseListener(new MouseAdapter() {//查询按钮
             private boolean readflag = false;
 
             public void mouseClicked(MouseEvent e) {
@@ -116,7 +115,6 @@ public class BasicMedicalInformationGUI {
                     }
                     if (readflag) {
                         MedicineToGUI(data);
-                        isInquired = true;
                     } else // if (!readFlag)
                     {
                         JOptionPane.showMessageDialog(null, "未找到该药品", "警告", JOptionPane.WARNING_MESSAGE);
@@ -124,49 +122,42 @@ public class BasicMedicalInformationGUI {
                     }
                 } else // 药品编码为空，尝试通过药品名称查找
                 {
-                    if (ChineseName.getText().equals("")) //如果药品编码和药品名称均为空
-                    {
-                        JOptionPane.showMessageDialog(null, "请键入药品编码或药品名称", "警告", JOptionPane.WARNING_MESSAGE);
-                        init();
-                    } else //药品编码为空，药品名称不为空
-                    // 逐条读取，判断用户输入的名称是不是其子串，如果是则用字符串形式将其表示，展示在列表上；当选中列表的某一项时，执行readCSV
-                    {
-                        String item[] = new String[25];
-                        BufferedReader reader = null;
-                        try {
-                            reader = new BufferedReader(new FileReader("data/Medicine.csv"));
-                        } catch (FileNotFoundException e1) {
-                            e1.printStackTrace();
-                            JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
-                        }
-                        try {
-                            reader.readLine();//第一行为标题，跳过
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                            JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
-                        }
-                        String line;
-                        listModel = new DefaultListModel();
-                        DefaultListModel emptyListModel = new DefaultListModel<>();
-                        searchResults.setModel(emptyListModel);
-                        try {
-                            while ((line = reader.readLine()) != null) {
-                                item = line.split(",");
-                                if (item[1].contains(ChineseName.getText()))//判断文本框中的内容是否是item[1]的子串
-                                {
-                                    Medicine medicine = new Medicine();
-                                    medicine.readCSV(item[0]);
-                                    // 展示到界面右侧列表
-                                    listModel.addElement(medicine);
-                                    searchResults.setModel(listModel);
-                                }
-                            }
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                            JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
-                        }
-                    }
 
+                    // 逐条读取，判断用户输入的名称是不是其子串，如果是则用字符串形式将其表示，展示在列表上；当选中列表的某一项时，执行readCSV
+                    String item[] = new String[25];
+                    BufferedReader reader = null;
+                    try {
+                        reader = new BufferedReader(new FileReader("data/Medicine.csv"));
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                    try {
+                        reader.readLine();//第一行为标题，跳过
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                    String line;
+                    listModel = new DefaultListModel();
+                    DefaultListModel emptyListModel = new DefaultListModel<>();
+                    searchResults.setModel(emptyListModel);
+                    try {
+                        while ((line = reader.readLine()) != null) {
+                            item = line.split(",");
+                            if (item[1].contains(ChineseName.getText()))//判断文本框中的内容是否是item[1]的子串
+                            {
+                                Medicine medicine = new Medicine();
+                                medicine.readCSV(item[0]);
+                                // 展示到界面右侧列表
+                                listModel.addElement(medicine);
+                                searchResults.setModel(listModel);
+                            }
+                        }
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
@@ -220,7 +211,21 @@ public class BasicMedicalInformationGUI {
                 else {
                     if (JOptionPane.showConfirmDialog(null, "确定删除？", "确认", JOptionPane.YES_NO_OPTION) == 0)//用户点击 确定
                     {
-                        
+                        File file = new File("data/Medicine.csv");
+                        File temp = new File("data/Medicine.temp.csv");
+                        try {
+                            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temp)));
+                            String line;
+                            while ((line = reader.readLine()) != null) {
+
+                            }
+                        } catch (FileNotFoundException e1) {
+                            JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
                     //若用户点击“取消”，无需任何动作
                 }
@@ -240,17 +245,17 @@ public class BasicMedicalInformationGUI {
             // 药品编码文本框 内容被修改
             @Override
             public void insertUpdate(DocumentEvent e) {
-                init();
+                isInquired = false;
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                init();
+                isInquired = false;
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                init();
+                isInquired = false;
             }
         });
 
@@ -339,6 +344,8 @@ public class BasicMedicalInformationGUI {
         nationalCatelogCode.setText(data.getNationalCatelogCode());
         limitUsage.setText(data.getLimitUsage());
         origin.setText(data.getOrigin());
+
+        isInquired = true;
     }
 
     public void GUItoMedicine(Medicine data) {
