@@ -269,7 +269,9 @@ public class Medicine {
     }
 
 
-    public boolean writeCSV(String coding) throws IOException {
+    public boolean writeCSV() throws IOException
+    // Medicine 实例的信息写入CSV
+    {
         String item[] = new String[25];
         item[0] = this.coding;
         if (readCSV(item[0]))//CSV 中已有当前药品

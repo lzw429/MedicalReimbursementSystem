@@ -4,8 +4,6 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.event.ContainerAdapter;
-import java.awt.event.ContainerEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
@@ -104,14 +102,14 @@ public class BasicMedicalInformationGUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);  // 查询按钮被按下
                 // 通过 药品编码 或 药品名称 查询
-                if (!medicineCoding.getText().equals(""))//如果编号非空
+                if (!medicineCoding.getText().equals(""))//如果编码非空
                 {
                     BasicMedicalInformation.Medicine data = new BasicMedicalInformation.Medicine();
                     try {
                         readflag = data.readCSV(medicineCoding.getText());
                     } catch (IOException e1) {
                         e1.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
                     }
                     if (readflag) {
                         MedicineToGUI(data);
@@ -133,7 +131,7 @@ public class BasicMedicalInformationGUI {
                         JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
                     } catch (IOException e1) {
                         e1.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
                     }
                     String line;
                     listModel = new DefaultListModel();
@@ -153,7 +151,7 @@ public class BasicMedicalInformationGUI {
                         reader.close();
                     } catch (IOException e1) {
                         e1.printStackTrace();
-                        JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -170,10 +168,10 @@ public class BasicMedicalInformationGUI {
                         BasicMedicalInformation.Medicine data = new BasicMedicalInformation.Medicine();
                         GUItoMedicine(data);
                         try {
-                            writeFlag = data.writeCSV(data.getCoding());
+                            writeFlag = data.writeCSV();
                         } catch (IOException e1) {
                             e1.printStackTrace();
-                            JOptionPane.showMessageDialog(null, "文件写出错误", "错误", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
                         }
                         if (!writeFlag) {// 在writeCSV方法中，coding已存在的药品不会被添加
                             JOptionPane.showMessageDialog(null, "该药品已存在", "警告", JOptionPane.WARNING_MESSAGE);
@@ -196,11 +194,46 @@ public class BasicMedicalInformationGUI {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);  // 保存按钮被按下
-                // 添加新数据，删除原数据
-                if (!isCompleted())
+                // 先判断数据是否完整，如果完整，再判断该编码是否存在CSV中，如果存在则删除原数据、添加新数据
+                if (!isCompleted()) //判断信息是否完整
+                {
                     JOptionPane.showMessageDialog(null, "请输入完整的信息", "警告", JOptionPane.WARNING_MESSAGE);
-                Medicine data;
-                //GUItoMedicine(data);
+                } else {
+                    Medicine data = new Medicine();
+                    GUItoMedicine(data);
+                    Medicine findCSV = new Medicine();
+                    try {
+                        if (!findCSV.readCSV(medicineCoding.getText())) //判断当前编码是否存在于CSV
+                        {
+                            JOptionPane.showMessageDialog(null, "未找到该药品", "错误", JOptionPane.ERROR_MESSAGE);
+                        } else { //删除原数据、添加新数据
+                            File file = new File("data/Medicine.csv");
+                            File temp = new File("data/Medicine.temp.csv");
+                            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temp)));
+                            String line;
+                            String[] item;
+                            while ((line = reader.readLine()) != null) {
+                                item = line.split(",");
+                                if (!item[0].equals(medicineCoding.getText())) {
+                                    writer.write(line + "\n");
+                                }
+                            }
+                            reader.close();
+                            writer.close();
+                            file.delete();
+                            temp.renameTo(file);
+
+                            data.writeCSV();
+                            isInquired = true;
+                            searchResults.setModel(new DefaultListModel());
+                            JOptionPane.showMessageDialog(null, "保存成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
         });
 
@@ -240,7 +273,7 @@ public class BasicMedicalInformationGUI {
                             JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
                         } catch (IOException e1) {
                             e1.printStackTrace();
-                            JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     //若用户点击“取消”，无需任何动作
@@ -399,7 +432,7 @@ public class BasicMedicalInformationGUI {
     }
 
     public boolean isCompleted() {
-        if (medicineCoding.getText().equals("") || ChineseName.getText().equals("") || EnglishName.getText().equals("") || dosageUnit.getText().equals("") || maximumPrice.getText().equals("") || chargeCategory.getSelectedIndex() == 0 || prescriptionMark.getSelectedIndex() == 0 || hospitalPreparationSigns.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || feeLevel.getSelectedIndex() == 0 || dosageForm.getText().equals("") || frequency.getText().equals("") || unit.getText().equals("") || usage.getText().equals("") || specification.getText().equals("") || limitDays.getText().equals("") || tradeName.getText().equals("") || factory.getText().equals("") || ChineseMedicineProspectiveWord.getText().equals("") || remarks.getText().equals("") || nationalCatelogCode.getText().equals("") || limitUsage.getText().equals("") || origin.getText().equals(""))
+        if (medicineCoding.getText().equals("") || ChineseName.getText().equals("") || EnglishName.getText().equals("") || dosageUnit.getText().equals("") || maximumPrice.getText().equals("") || chargeCategory.getSelectedIndex() == 0 || prescriptionMark.getSelectedIndex() == 0 || hospitalPreparationSigns.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || feeLevel.getSelectedIndex() == 0 || dosageForm.getText().equals("") || frequency.getText().equals("") || unit.getText().equals("") || usage.getText().equals("") || specification.getText().equals("") || limitDays.getText().equals("") || tradeName.getText().equals("") || factory.getText().equals("") || ChineseMedicineProspectiveWord.getText().equals("") || remarks.getText().equals("") || nationalCatelogCode.getText().equals("") || limitUsage.getText().equals("") || origin.getText().equals("") || hospitalGrade.getSelectedIndex() == 0)
             return false;
         return true;
     }
