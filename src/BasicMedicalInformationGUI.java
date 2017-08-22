@@ -46,6 +46,12 @@ public class BasicMedicalInformationGUI {
     private JTextField origin;
     private JButton reset;
     private JList searchResults;
+    private JTextField textField1;
+    private JComboBox comboBox2;
+    private JComboBox comboBox1;
+    private JTextField textField2;
+    private JTextArea textArea1;
+    private JButton 添加Button;
     private DefaultListModel listModel;
     private boolean isInquired = false;
 
