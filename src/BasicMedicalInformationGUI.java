@@ -122,7 +122,6 @@ public class BasicMedicalInformationGUI {
                     }
                 } else // 药品编码为空，尝试通过药品名称查找
                 {
-
                     // 逐条读取，判断用户输入的名称是不是其子串，如果是则用字符串形式将其表示，展示在列表上；当选中列表的某一项时，执行readCSV
                     String item[] = new String[25];
                     BufferedReader reader = null;
@@ -154,6 +153,7 @@ public class BasicMedicalInformationGUI {
                                 searchResults.setModel(listModel);
                             }
                         }
+                        reader.close();
                     } catch (IOException e1) {
                         e1.printStackTrace();
                         JOptionPane.showMessageDialog(null, "文件读入错误", "错误", JOptionPane.ERROR_MESSAGE);
@@ -218,11 +218,12 @@ public class BasicMedicalInformationGUI {
                             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
                             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temp)));
                             String line;
-                            String[] item = new String[25];
+                            String[] item;
                             while ((line = reader.readLine()) != null) {
                                 item = line.split(",");
-                                if (!item[0].equals(medicineCoding))
-                                    writer.write(line);
+                                if (!item[0].equals(medicineCoding.getText())) {
+                                    writer.write(line + "\n");
+                                }
                             }
                             reader.close();
                             writer.close();

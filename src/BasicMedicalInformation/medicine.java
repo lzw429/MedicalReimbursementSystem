@@ -236,6 +236,7 @@ public class Medicine {
                 break;
             }
         }
+        reader.close();
         if (!find)
             return false;
         this.coding = item[0];
