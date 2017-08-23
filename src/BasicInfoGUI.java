@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class BasicInfoGUI extends DAO {
+public class BasicInfoGUI {
     private JPanel mainPanel;
     private JTabbedPane tabbedPane1;
     private JTextField textField1;
@@ -42,60 +42,17 @@ public class BasicInfoGUI extends DAO {
     {
 
         inquireUnit.addMouseListener(new MouseAdapter() {
+            private boolean readFlag = false;
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);// 查询单位信息 按钮被按下
-                //通过单位编号 或 单位名称 查询
                 if (!unitCoding.getText().equals(""))//如果编码非空
                 {
-                    Unit unit = new Unit();
-                    try {
-                        con = getConnection();
-                        s = con.createStatement();//创建SQL语句对象
-                        rs = s.executeQuery("select * from Unit where unitCoding = " + unitCoding.getText());// 查询单位信息
-                        while (rs.next()) {
-                            unitCoding.setText(rs.getString("unitCoding"));
-                            unitName.setText(rs.getString("unitName"));
-                            unitType.setSelectedIndex(rs.getInt("type"));
-                            unitAddress.setText(rs.getString("address"));
-                            unitZipCode.setText(rs.getString("zipcode"));
-                            unitTel.setText(rs.getString("tel"));
-                        }
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    } finally {
-                        CloseConnection(con, rs, s);
-                    }
+                    Unit data = new Unit();
+
                 }
             }
         });
-    }
-
-    public void add() {
-        try {
-            con = getConnection();
-            s = con.createStatement();//创建SQL语句对象
-            int result = s.executeUpdate("insert into Unit(unitCoding,unitName,type,address,zipcode,tel)");
-            //if (result>0)插入成功
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            CloseConnection(con, rs, s);
-        }
-
-    }
-
-    public void delete() {
-        try {
-            con = getConnection();
-            s = con.createStatement();//创建SQL语句对象
-            int result = s.executeUpdate("delete from Unit where ");
-            //if(result>0) 删除成功
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        } finally {
-            CloseConnection(con, rs, s);
-        }
-
     }
 }

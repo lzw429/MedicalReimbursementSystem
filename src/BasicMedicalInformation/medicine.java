@@ -274,7 +274,7 @@ public class Medicine {
     {
         String item[] = new String[25];
         item[0] = this.coding;
-        if (readCSV(item[0]))//CSV 中已有当前药品
+        if (readCSV(item[0]))//CSV 中已有当前实例
             return false;
         item[1] = this.ChineseName;
         item[2] = this.EnglishName;
@@ -306,9 +306,9 @@ public class Medicine {
         try {
             File file = new File("data/Medicine.csv");
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-            for (int i = 0; i != 23; ++i) {
+            for (int i = 0; i != 23; ++i)
                 writer.write(item[i] + ",");
-            }
+
             writer.write(item[23]);
             writer.newLine();
             writer.close();

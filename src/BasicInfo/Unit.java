@@ -1,5 +1,7 @@
 package BasicInfo;
 
+import java.io.IOException;
+
 public class Unit {
     private String coding;//单位编号
     private String name;//单位名称
@@ -54,5 +56,13 @@ public class Unit {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    //成员方法
+    public  boolean readCSV(String coding)
+        throws IOException
+    {
+        String item[]=new String [25];
+        boolean find = false;
     }
 }

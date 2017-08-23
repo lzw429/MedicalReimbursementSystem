@@ -1,4 +1,5 @@
 import BasicMedicalInformation.Disease;
+import BasicMedicalInformation.FixedMedicalInstitution;
 import BasicMedicalInformation.Medicine;
 
 import javax.swing.*;
@@ -82,9 +83,11 @@ public class BasicMedicalInformationGUI {
     private JButton resetInstitution;
     private JList InstitutionSearchResults;
     private DefaultListModel diseaseListModel;
+    private DefaultListModel institutionListModel;
 
     private boolean isMedicineInquired = false;
     private boolean isDiseaseInquired = false;
+    private boolean isInstitutionInquired = false;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("医疗基本信息维护");
@@ -560,6 +563,50 @@ public class BasicMedicalInformationGUI {
                     DiseaseToGUI(data);
             }
         });
+
+        inquireInstitution.addMouseListener(new MouseAdapter() {//查询机构 按钮
+            private boolean readFlag = false;
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                // 查询机构 按钮被按下
+                //通过 机构编号 或 机构名称查询
+                if (!institutionCoding.getText().equals(""))//如果编号非空
+                {
+                    FixedMedicalInstitution data = new FixedMedicalInstitution();
+                    try {
+                        readFlag = data.readCSV(institutionCoding.getText());
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                    if (readFlag) {
+                        InstitutionToGUI(data);
+                    } else // if(!readFlag)
+                    {
+                        JOptionPane.showMessageDialog(null, "未找到该机构信息", "警告", JOptionPane.WARNING_MESSAGE);
+                        initInstitution();
+                    }
+                } else //机构编号为空，尝试通过机构名称查找
+                {
+                    String item[];
+                    BufferedReader reader = null;
+                    try {
+                        reader = new BufferedReader(new FileReader("data/Institution.csv"));
+                        reader.readLine();//第一行是标题
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                    String line;
+
+                }
+            }
+        });
     }
 
     public void MedicineToGUI(Medicine data) {
@@ -668,5 +715,50 @@ public class BasicMedicalInformationGUI {
         isDiseaseInquired = false;
 
         diseasesSearchResults.setModel(new DefaultListModel());
+    }
+
+    public void InstitutionToGUI(FixedMedicalInstitution data) {
+        institutionCoding.setText(data.getCoding());
+        institutionName.setText(data.getName());
+        institutionGrade.setSelectedIndex(data.getHospitalGrade());
+        institutionType.setSelectedIndex(data.getType());
+        institutionZipCode.setText(data.getZipcode());
+        LRName.setText(data.getLRName());
+        LRTel.setText(data.getLRTel());
+        contactPersonName.setText(data.getContactPersonName());
+        contactTel.setText(data.getContactTel());
+        contactPersonTel.setText(data.getContactPersonTel());
+        address.setText(data.getAddress());
+        remarks.setText(data.getRemarks());
+    }
+
+    public void GUIToInstitution(FixedMedicalInstitution data) {
+        data.setCoding(institutionCoding.getText());
+        data.setName(institutionName.getText());
+        data.setHospitalGrade(institutionGrade.getSelectedIndex());
+        data.setType(institutionType.getSelectedIndex());
+        data.setZipcode(institutionZipCode.getText());
+        data.setLRName(LRName.getText());
+        data.setLRTel(LRTel.getText());
+        data.setContactPersonName(contactPersonName.getText());
+        data.setContactTel(contactTel.getText());
+        data.setContactPersonTel(contactPersonTel.getText());
+        data.setAddress(address.getText());
+        data.setRemarks(remarks.getText());
+    }
+
+    public void initInstitution() {
+        institutionCoding.setText("");
+        institutionName.setText("");
+        institutionGrade.setSelectedIndex(0);
+        institutionType.setSelectedIndex(0);
+        institutionZipCode.setText("");
+        LRName.setText("");
+        LRTel.setText("");
+        contactPersonName.setText("");
+        contactTel.setText("");
+        contactPersonTel.setText("");
+        address.setText("");
+        remarks.setText("");
     }
 }
