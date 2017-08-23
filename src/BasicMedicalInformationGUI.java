@@ -107,6 +107,7 @@ public class BasicMedicalInformationGUI {
     }
 
     public BasicMedicalInformationGUI() {
+
         inquireMedicine.addMouseListener(new MouseAdapter() {//查询药品 按钮
             private boolean readFlag = false;
 
@@ -272,7 +273,6 @@ public class BasicMedicalInformationGUI {
                                 item = line.split(",");
                                 if (!item[0].equals(medicineCoding.getText()))
                                     writer.write(line + "\n");
-
                             }
                             reader.close();
                             writer.close();
@@ -430,7 +430,7 @@ public class BasicMedicalInformationGUI {
                     JOptionPane.showMessageDialog(null, "请输入完整的信息", "警告", JOptionPane.WARNING_MESSAGE);
                 } else {
                     Disease data = new Disease();
-                    GUIToDisease(data);
+                    GUItoDisease(data);
                     Disease findCSV = new Disease();
                     try {
                         if (!findCSV.readCSV(diseasesCoding.getText())) {
@@ -500,117 +500,155 @@ public class BasicMedicalInformationGUI {
                         } catch (IOException e1) {
                             e1.printStackTrace();
                             JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
-                           }
+                        }
                     }
-                });
+                }
             }
+        });
 
-
-            public void MedicineToGUI(Medicine data) {
-                medicineCoding.setText(data.getCoding());
-                ChineseName.setText(data.getChineseName());
-                EnglishName.setText(data.getEnglishName());
-                chargeCategory.setSelectedIndex(data.getChargeCategory() + 1);
-                prescriptionMark.setSelectedIndex(data.getPrescriptionMark() + 1);
-                feeLevel.setSelectedIndex(data.getFeeLevel() + 1);
-                dosageUnit.setText(data.getDosageUnit());
-                maximumPrice.setText(Double.toString(data.getMaximumPrice()));
-                if (data.isHospitalPreparationSigns())
-                    hospitalPreparationSigns.setSelectedIndex(1);
-                else hospitalPreparationSigns.setSelectedIndex(2);
-                if (data.isNeedApproval())
-                    needApproval.setSelectedIndex(1);
-                else needApproval.setSelectedIndex(2);
-                hospitalGrade.setSelectedIndex(data.getHospitalGrade() + 1);
-                dosageForm.setText(data.getDosageForm());
-                frequency.setText(data.getFrequency());
-                usage.setText(data.getUsage());
-                unit.setText(data.getUnit());
-                specification.setText(data.getSpecification());
-                limitDays.setText(data.getLimitDays());
-                tradeName.setText(data.getTradeName());
-                factory.setText(data.getFactory());
-                ChineseMedicineProspectiveWord.setText(data.getChineseMedicineProspectiveWord());
-                remarks.setText(data.getRemarks());
-                nationalCatelogCode.setText(data.getNationalCatelogCode());
-                limitUsage.setText(data.getLimitUsage());
-                origin.setText(data.getOrigin());
-
-                isMedicineInquired = true;
-            }
-
-            public void GUItoMedicine(Medicine data) {
-                data.setCoding(medicineCoding.getText());
-                data.setChineseName(ChineseName.getText());
-                data.setEnglishName(EnglishName.getText());
-                data.setChargeCategory(chargeCategory.getSelectedIndex() - 1);
-                data.setPrescriptionMark(prescriptionMark.getSelectedIndex() - 1);
-                data.setFeeLevel(feeLevel.getSelectedIndex() - 1);
-                data.setDosageUnit(dosageUnit.getText());
-                data.setMaximumPrice(Double.parseDouble(maximumPrice.getText()));
-                if (hospitalPreparationSigns.getSelectedIndex() == 1)
-                    data.setHospitalPreparationSigns(true);
-                else if (hospitalPreparationSigns.getSelectedIndex() == 2)
-                    data.setHospitalPreparationSigns(false);
-                if (needApproval.getSelectedIndex() == 1)
-                    data.setNeedApproval(true);
-                else if (needApproval.getSelectedIndex() == 2)
-                    data.setNeedApproval(false);
-                data.setHospitalGrade(hospitalGrade.getSelectedIndex() - 1);
-                data.setDosageForm(dosageForm.getText());
-                data.setFrequency(frequency.getText());
-                data.setUsage(usage.getText());
-                data.setUnit(unit.getText());
-                data.setSpecification(specification.getText());
-                data.setLimitDays(limitDays.getText());
-                data.setTradeName(tradeName.getText());
-                data.setFactory(factory.getText());
-                data.setChineseMedicineProspectiveWord(ChineseMedicineProspectiveWord.getText());
-                data.setRemarks(remarks.getText());
-                data.setNationalCatelogCode(nationalCatelogCode.getText());
-                data.setLimitUsage(limitUsage.getText());
-                data.setOrigin(origin.getText());
-            }
-
-            public boolean isMedicineCompleted() {
-                if (medicineCoding.getText().equals("") || ChineseName.getText().equals("") || EnglishName.getText().equals("") || dosageUnit.getText().equals("") || maximumPrice.getText().equals("") || chargeCategory.getSelectedIndex() == 0 || prescriptionMark.getSelectedIndex() == 0 || hospitalPreparationSigns.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || feeLevel.getSelectedIndex() == 0 || dosageForm.getText().equals("") || frequency.getText().equals("") || unit.getText().equals("") || usage.getText().equals("") || specification.getText().equals("") || limitDays.getText().equals("") || tradeName.getText().equals("") || factory.getText().equals("") || ChineseMedicineProspectiveWord.getText().equals("") || remarks.getText().equals("") || nationalCatelogCode.getText().equals("") || limitUsage.getText().equals("") || origin.getText().equals("") || hospitalGrade.getSelectedIndex() == 0)
-                    return false;
-                return true;
-            }
-
-            public void DiseaseToGUI(Disease data) {
-                diseasesCoding.setText(data.getCoding());
-                diseasesName.setText(data.getName());
-                diseasesCategory.setSelectedIndex(data.getCategory());
-                diseaseReimbursementSigns.setSelectedIndex(data.getReimbursementSigns());
-                diseasesRemark.setText(data.getRemarks());
-
-                isDiseaseInquired = true;
-            }
-
-            public void GUItoDisease(Disease data) {
-                data.setCoding(diseasesCoding.getText());
-                data.setName(diseasesName.getText());
-                data.setCategory(diseasesCategory.getSelectedIndex());
-                data.setReimbursementSigns(diseaseReimbursementSigns.getSelectedIndex());
-                data.setRemarks(diseasesRemark.getText());
-            }
-
-            public boolean isDiseaseCompleted() {
-                if (diseasesCoding.getText().equals("") || diseasesName.getText().equals("") || diseasesCategory.getSelectedIndex() == 0 || diseaseReimbursementSigns.getSelectedIndex() == 0 || diseasesRemark.equals(""))
-                    return false;
-                return true;
-            }
-
-            public void initDisease() {
+        resetDisease.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);  // 重置病种 按钮被按下
+                initDisease();
                 diseasesCoding.setText("");
-                diseasesName.setText("");
-                diseaseReimbursementSigns.setSelectedIndex(0);
-                diseasesCategory.setSelectedIndex(0);
-                diseasesRemark.setText("");
-
-                isDiseaseInquired = false;
-
-                diseasesSearchResults.setModel(new DefaultListModel());
             }
-        }
+        });
+
+        diseasesCoding.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            // 病种编码文本框 内容被修改
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isDiseaseInquired = false;
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isDiseaseInquired = false;
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isDiseaseInquired = false;
+            }
+        });
+
+        diseasesSearchResults.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) // 列表元素被选中
+            {
+                Disease data;
+                if ((data = (Disease) diseasesSearchResults.getSelectedValue()) != null)
+                    DiseaseToGUI(data);
+            }
+        });
+    }
+
+    public void MedicineToGUI(Medicine data) {
+        medicineCoding.setText(data.getCoding());
+        ChineseName.setText(data.getChineseName());
+        EnglishName.setText(data.getEnglishName());
+        chargeCategory.setSelectedIndex(data.getChargeCategory() + 1);
+        prescriptionMark.setSelectedIndex(data.getPrescriptionMark() + 1);
+        feeLevel.setSelectedIndex(data.getFeeLevel() + 1);
+        dosageUnit.setText(data.getDosageUnit());
+        maximumPrice.setText(Double.toString(data.getMaximumPrice()));
+        if (data.isHospitalPreparationSigns())
+            hospitalPreparationSigns.setSelectedIndex(1);
+        else hospitalPreparationSigns.setSelectedIndex(2);
+        if (data.isNeedApproval())
+            needApproval.setSelectedIndex(1);
+        else needApproval.setSelectedIndex(2);
+        hospitalGrade.setSelectedIndex(data.getHospitalGrade() + 1);
+        dosageForm.setText(data.getDosageForm());
+        frequency.setText(data.getFrequency());
+        usage.setText(data.getUsage());
+        unit.setText(data.getUnit());
+        specification.setText(data.getSpecification());
+        limitDays.setText(data.getLimitDays());
+        tradeName.setText(data.getTradeName());
+        factory.setText(data.getFactory());
+        ChineseMedicineProspectiveWord.setText(data.getChineseMedicineProspectiveWord());
+        remarks.setText(data.getRemarks());
+        nationalCatelogCode.setText(data.getNationalCatelogCode());
+        limitUsage.setText(data.getLimitUsage());
+        origin.setText(data.getOrigin());
+
+        isMedicineInquired = true;
+    }
+
+    public void GUItoMedicine(Medicine data) {
+        data.setCoding(medicineCoding.getText());
+        data.setChineseName(ChineseName.getText());
+        data.setEnglishName(EnglishName.getText());
+        data.setChargeCategory(chargeCategory.getSelectedIndex() - 1);
+        data.setPrescriptionMark(prescriptionMark.getSelectedIndex() - 1);
+        data.setFeeLevel(feeLevel.getSelectedIndex() - 1);
+        data.setDosageUnit(dosageUnit.getText());
+        data.setMaximumPrice(Double.parseDouble(maximumPrice.getText()));
+        if (hospitalPreparationSigns.getSelectedIndex() == 1)
+            data.setHospitalPreparationSigns(true);
+        else if (hospitalPreparationSigns.getSelectedIndex() == 2)
+            data.setHospitalPreparationSigns(false);
+        if (needApproval.getSelectedIndex() == 1)
+            data.setNeedApproval(true);
+        else if (needApproval.getSelectedIndex() == 2)
+            data.setNeedApproval(false);
+        data.setHospitalGrade(hospitalGrade.getSelectedIndex() - 1);
+        data.setDosageForm(dosageForm.getText());
+        data.setFrequency(frequency.getText());
+        data.setUsage(usage.getText());
+        data.setUnit(unit.getText());
+        data.setSpecification(specification.getText());
+        data.setLimitDays(limitDays.getText());
+        data.setTradeName(tradeName.getText());
+        data.setFactory(factory.getText());
+        data.setChineseMedicineProspectiveWord(ChineseMedicineProspectiveWord.getText());
+        data.setRemarks(remarks.getText());
+        data.setNationalCatelogCode(nationalCatelogCode.getText());
+        data.setLimitUsage(limitUsage.getText());
+        data.setOrigin(origin.getText());
+    }
+
+    public boolean isMedicineCompleted() {
+        if (medicineCoding.getText().equals("") || ChineseName.getText().equals("") || EnglishName.getText().equals("") || dosageUnit.getText().equals("") || maximumPrice.getText().equals("") || chargeCategory.getSelectedIndex() == 0 || prescriptionMark.getSelectedIndex() == 0 || hospitalPreparationSigns.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || feeLevel.getSelectedIndex() == 0 || dosageForm.getText().equals("") || frequency.getText().equals("") || unit.getText().equals("") || usage.getText().equals("") || specification.getText().equals("") || limitDays.getText().equals("") || tradeName.getText().equals("") || factory.getText().equals("") || ChineseMedicineProspectiveWord.getText().equals("") || remarks.getText().equals("") || nationalCatelogCode.getText().equals("") || limitUsage.getText().equals("") || origin.getText().equals("") || hospitalGrade.getSelectedIndex() == 0)
+            return false;
+        return true;
+    }
+
+    public void DiseaseToGUI(Disease data) {
+        diseasesCoding.setText(data.getCoding());
+        diseasesName.setText(data.getName());
+        diseasesCategory.setSelectedIndex(data.getCategory());
+        diseaseReimbursementSigns.setSelectedIndex(data.getReimbursementSigns());
+        diseasesRemark.setText(data.getRemarks());
+
+        isDiseaseInquired = true;
+    }
+
+    public void GUItoDisease(Disease data) {
+        data.setCoding(diseasesCoding.getText());
+        data.setName(diseasesName.getText());
+        data.setCategory(diseasesCategory.getSelectedIndex());
+        data.setReimbursementSigns(diseaseReimbursementSigns.getSelectedIndex());
+        data.setRemarks(diseasesRemark.getText());
+    }
+
+    public boolean isDiseaseCompleted() {
+        if (diseasesCoding.getText().equals("") || diseasesName.getText().equals("") || diseasesCategory.getSelectedIndex() == 0 || diseaseReimbursementSigns.getSelectedIndex() == 0 || diseasesRemark.equals(""))
+            return false;
+        return true;
+    }
+
+    public void initDisease() {
+        diseasesCoding.setText("");
+        diseasesName.setText("");
+        diseaseReimbursementSigns.setSelectedIndex(0);
+        diseasesCategory.setSelectedIndex(0);
+        diseasesRemark.setText("");
+
+        isDiseaseInquired = false;
+
+        diseasesSearchResults.setModel(new DefaultListModel());
+    }
+}
