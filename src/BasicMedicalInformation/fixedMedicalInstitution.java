@@ -1,11 +1,11 @@
 package BasicMedicalInformation;
 
 public class FixedMedicalInstitution {
-    private int coding;//定点医疗机构编号
+    private String coding;//定点医疗机构编号
     private String name;//服务机构名称
     private int hospitalGrade;//医院等级
     private int type;//医疗机构类别
-    private int zipcode;//邮政编码
+    private String zipcode;//邮政编码
     private String LRName;//法定代表人姓名
     private String LRTel;//法人代表移动电话
     private String contactPersonName;//联系人姓名
@@ -22,11 +22,11 @@ public class FixedMedicalInstitution {
         this.hospitalGrade = hospitalGrade;
     }
 
-    public int getCoding() {
+    public String getCoding() {
         return coding;
     }
 
-    public void setCoding(int coding) {
+    public void setCoding(String coding) {
         this.coding = coding;
     }
 
@@ -47,11 +47,11 @@ public class FixedMedicalInstitution {
         this.type = type;
     }
 
-    public int getZipcode() {
+    public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 

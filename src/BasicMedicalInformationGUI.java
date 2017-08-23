@@ -63,6 +63,24 @@ public class BasicMedicalInformationGUI {
     private JButton saveDisease;
     private JButton deleteDisease;
     private JButton resetDisease;
+    private JTextField institutionCoding;
+    private JComboBox institutionGrade;
+    private JTextField institutionName;
+    private JComboBox institutionType;
+    private JTextField institutionZipCode;
+    private JTextField LRName;
+    private JTextField LRTel;
+    private JTextField contactPersonName;
+    private JTextField contactTel;
+    private JTextField contactPersonTel;
+    private JTextField address;
+    private JTextField institutionRemark;
+    private JButton inquireInstitution;
+    private JButton addInstitution;
+    private JButton saveInstitution;
+    private JButton deleteInstitution;
+    private JButton resetInstitution;
+    private JList InstitutionSearchResults;
     private DefaultListModel diseaseListModel;
 
     private boolean isMedicineInquired = false;
@@ -116,7 +134,7 @@ public class BasicMedicalInformationGUI {
                 // 通过 药品编码 或 药品名称 查询
                 if (!medicineCoding.getText().equals(""))//如果编码非空
                 {
-                    Medicine data = new BasicMedicalInformation.Medicine();
+                    Medicine data = new Medicine();
                     try {
                         readFlag = data.readCSV(medicineCoding.getText());
                     } catch (IOException e1) {
