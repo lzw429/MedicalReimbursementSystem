@@ -3,7 +3,7 @@ package BasicMedicalInformation;
 import javax.swing.*;
 import java.io.*;
 
-public class FixedMedicalInstitution {
+public class Institution {
     private String coding;//定点医疗机构编号
     private String name;//服务机构名称
     private int hospitalGrade;//医院等级

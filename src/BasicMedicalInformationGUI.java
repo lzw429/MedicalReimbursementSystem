@@ -1,5 +1,5 @@
 import BasicMedicalInformation.Disease;
-import BasicMedicalInformation.FixedMedicalInstitution;
+import BasicMedicalInformation.Institution;
 import BasicMedicalInformation.Medicine;
 
 import javax.swing.*;
@@ -60,6 +60,8 @@ public class BasicMedicalInformationGUI {
     private JButton inquireDisease;
     private JTextField diseasesName;
 
+    private DefaultListModel diseaseListModel;
+
     private JList diseasesSearchResults;
     private JButton saveDisease;
     private JButton deleteDisease;
@@ -81,8 +83,8 @@ public class BasicMedicalInformationGUI {
     private JButton saveInstitution;
     private JButton deleteInstitution;
     private JButton resetInstitution;
-    private JList InstitutionSearchResults;
-    private DefaultListModel diseaseListModel;
+    private JList institutionSearchResults;
+
     private DefaultListModel institutionListModel;
 
     private boolean isMedicineInquired = false;
@@ -574,7 +576,7 @@ public class BasicMedicalInformationGUI {
                 //通过 机构编号 或 机构名称查询
                 if (!institutionCoding.getText().equals(""))//如果编号非空
                 {
-                    FixedMedicalInstitution data = new FixedMedicalInstitution();
+                    Institution data = new Institution();
                     try {
                         readFlag = data.readCSV(institutionCoding.getText());
                     } catch (IOException e1) {
@@ -603,10 +605,173 @@ public class BasicMedicalInformationGUI {
                         JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
                     }
                     String line;
-
+                    institutionListModel = new DefaultListModel();
+                    institutionSearchResults.setModel(new DefaultListModel());
+                    try {
+                        while ((line = reader.readLine()) != null) {
+                            item = line.split(",");
+                            if (item[1].contains(institutionName.getText()))//判断文本框中的内容是否是item[1]的子串
+                            {
+                                Institution institution = new Institution();
+                                institution.readCSV(item[0]);
+                                //展示到界面右侧列表
+                                institutionListModel.addElement(institution);
+                                institutionSearchResults.setModel(institutionListModel);
+                            }
+                        }
+                        reader.close();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         });
+
+        addInstitution.addMouseListener(new MouseAdapter() {
+            private boolean writeFlag;
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);// 添加机构 按钮被按下
+                if (isInstitutionCompleted())//如果信息完整
+                {
+                    try {
+                        Institution data = new Institution();
+                        GUIToInstitution(data);
+                        writeFlag = data.writeCSV();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                    if (!writeFlag) {//在writeCSV方法中，coding已存在的机构不会被添加
+                        JOptionPane.showMessageDialog(null, "该机构信息已存在", "警告", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        isInstitutionInquired = true;
+                        JOptionPane.showMessageDialog(null, "添加机构信息成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+                        institutionSearchResults.setModel(new DefaultListModel());
+                    }
+                }
+            }
+        });
+
+        institutionCoding.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            // 机构编号文本框 内容被修改
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isInstitutionInquired = false;
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isInstitutionInquired = false;
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isInstitutionInquired = false;
+            }
+        });
+
+        institutionSearchResults.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) // 列表元素被选中
+            {
+                Institution data;
+                if ((data = (Institution) institutionSearchResults.getSelectedValue()) != null)
+                    InstitutionToGUI(data);
+            }
+        });
+
+        saveInstitution.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);// 保存机构信息 按钮被按下
+                if (!isInstitutionCompleted()) {
+                    JOptionPane.showMessageDialog(null, "请输入完整的信息", "警告", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    Institution data = new Institution();
+                    GUIToInstitution(data);
+                    Institution findCSV = new Institution();
+                    try {
+                        if (!findCSV.readCSV(institutionCoding.getText())) {
+                            JOptionPane.showMessageDialog(null, "未找到该机构", "错误", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            File file = new File("data/Institution.csv");
+                            File temp = new File("data/Institution.temp.csv");
+                            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temp)));
+                            String line;
+                            String[] item;
+                            while ((line = reader.readLine()) != null) {
+                                item = line.split(",");
+                                if (!item[0].equals(institutionCoding.getText()))
+                                    writer.write(line + "\n");
+                            }
+                            reader.close();
+                            writer.close();
+                            file.delete();
+                            temp.renameTo(file);
+
+                            data.writeCSV();
+                            isInstitutionInquired = true;
+                            institutionSearchResults.setModel(new DefaultListModel());
+                            JOptionPane.showMessageDialog(null, "保存成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        });
+
+        deleteInstitution.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);//删除机构 按钮被按下
+                if (!isInstitutionInquired)
+                    JOptionPane.showMessageDialog(null, "请指定机构", "警告", JOptionPane.WARNING_MESSAGE);
+                else {
+                    if (JOptionPane.showConfirmDialog(null, "确定删除？", "确认", JOptionPane.YES_NO_OPTION) == 0)//用户点击 确定
+                    {
+                        File file = new File("data/Institution.csv");
+                        File temp = new File("data/Institution.temp.csv");
+                        try {
+                            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temp)));
+                            String line;
+                            String[] item;
+                            while ((line = reader.readLine()) != null) {
+                                item = line.split(",");
+                                if (!item[0].equals(institutionCoding.getText()))
+                                    writer.write(line + "\n");
+                            }
+                            reader.close();
+                            writer.close();
+                            file.delete();
+                            temp.renameTo(file);
+                            isInstitutionInquired = false;
+                            institutionCoding.setText("");
+                            initInstitution();
+                            JOptionPane.showMessageDialog(null, "删除成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+                        } catch (FileNotFoundException e1) {
+                            JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+
+    public boolean isInstitutionCompleted() {
+        if (institutionCoding.equals("") || institutionName.equals("") || institutionGrade.getSelectedIndex() == 0 || institutionType.getSelectedIndex() == 0 || institutionZipCode.equals("") || LRName.equals("") || LRTel.equals("") || contactPersonName.equals("") || contactTel.equals("") || contactPersonTel.equals("") || address.equals("") || remarks.equals(""))
+            return false;
+        return true;
     }
 
     public void MedicineToGUI(Medicine data) {
@@ -717,7 +882,7 @@ public class BasicMedicalInformationGUI {
         diseasesSearchResults.setModel(new DefaultListModel());
     }
 
-    public void InstitutionToGUI(FixedMedicalInstitution data) {
+    public void InstitutionToGUI(Institution data) {
         institutionCoding.setText(data.getCoding());
         institutionName.setText(data.getName());
         institutionGrade.setSelectedIndex(data.getHospitalGrade());
@@ -732,7 +897,7 @@ public class BasicMedicalInformationGUI {
         remarks.setText(data.getRemarks());
     }
 
-    public void GUIToInstitution(FixedMedicalInstitution data) {
+    public void GUIToInstitution(Institution data) {
         data.setCoding(institutionCoding.getText());
         data.setName(institutionName.getText());
         data.setHospitalGrade(institutionGrade.getSelectedIndex());

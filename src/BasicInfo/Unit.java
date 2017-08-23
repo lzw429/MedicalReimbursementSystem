@@ -59,10 +59,11 @@ public class Unit {
     }
 
     //成员方法
-    public  boolean readCSV(String coding)
-        throws IOException
-    {
-        String item[]=new String [25];
+    public boolean readCSV(String coding)
+            throws IOException {
+        String item[] = new String[25];
         boolean find = false;
+        //这个函数还没有实现
+        return true;
     }
 }
