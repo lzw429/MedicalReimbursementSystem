@@ -162,7 +162,7 @@
                   <enabled value="true"/>
                 </properties>
               </component>
-              <component id="f8a76" class="javax.swing.JButton" binding="inquire">
+              <component id="f8a76" class="javax.swing.JButton" binding="inquireMedicine">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -483,7 +483,7 @@
                   <enabled value="true"/>
                 </properties>
               </component>
-              <component id="bf6fb" class="javax.swing.JList" binding="searchResults">
+              <component id="bf6fb" class="javax.swing.JList" binding="medicineSearchResults">
                 <constraints>
                   <grid row="1" column="3" row-span="23" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <preferred-size width="500" height="50"/>
@@ -501,7 +501,7 @@
                   <text value="查询结果"/>
                 </properties>
               </component>
-              <component id="99365" class="javax.swing.JButton" binding="reset">
+              <component id="99365" class="javax.swing.JButton" binding="resetMedicine">
                 <constraints>
                   <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -509,7 +509,7 @@
                   <text value="重置"/>
                 </properties>
               </component>
-              <component id="c1f35" class="javax.swing.JButton" binding="addData">
+              <component id="c1f35" class="javax.swing.JButton" binding="addMedicine">
                 <constraints>
                   <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -517,7 +517,7 @@
                   <text value="添加"/>
                 </properties>
               </component>
-              <component id="79acb" class="javax.swing.JButton" binding="saveData">
+              <component id="79acb" class="javax.swing.JButton" binding="saveMedicine">
                 <constraints>
                   <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -525,7 +525,7 @@
                   <text value="保存"/>
                 </properties>
               </component>
-              <component id="f3f4b" class="javax.swing.JButton" binding="deleteData">
+              <component id="f3f4b" class="javax.swing.JButton" binding="deleteMedicine">
                 <constraints>
                   <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -583,7 +583,7 @@
                   <text value="疾病种类"/>
                 </properties>
               </component>
-              <component id="a019f" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+              <component id="a019f" class="javax.swing.JTextField" binding="diseasesCoding">
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -591,7 +591,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="925a5" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+              <component id="925a5" class="javax.swing.JComboBox" binding="diseasesCategory">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -615,7 +615,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="b9928" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+              <component id="b9928" class="javax.swing.JComboBox" binding="diseaseReimbursementSigns">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -631,7 +631,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="a6127" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+              <component id="a6127" class="javax.swing.JTextField" binding="diseasesRemark">
                 <constraints>
                   <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -639,7 +639,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="beb51" class="javax.swing.JTextField" default-binding="true">
+              <component id="beb51" class="javax.swing.JTextField" binding="diseasesName">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
@@ -647,15 +647,7 @@
                 </constraints>
                 <properties/>
               </component>
-              <component id="34b33" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
-                <constraints>
-                  <grid row="6" column="0" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="50"/>
-                  </grid>
-                </constraints>
-                <properties/>
-              </component>
-              <component id="2ae48" class="javax.swing.JButton" default-binding="true">
+              <component id="2ae48" class="javax.swing.JButton" binding="resetDisease">
                 <constraints>
                   <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -671,7 +663,7 @@
                   <text value="查询结果"/>
                 </properties>
               </component>
-              <component id="9d08a" class="javax.swing.JButton" default-binding="true">
+              <component id="9d08a" class="javax.swing.JButton" binding="inquireDisease">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -679,7 +671,7 @@
                   <text value="查询"/>
                 </properties>
               </component>
-              <component id="a5b5d" class="javax.swing.JButton" binding="添加Button" default-binding="true">
+              <component id="a5b5d" class="javax.swing.JButton" binding="addDisease">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -687,7 +679,7 @@
                   <text value="添加"/>
                 </properties>
               </component>
-              <component id="beb34" class="javax.swing.JButton" default-binding="true">
+              <component id="beb34" class="javax.swing.JButton" binding="saveDisease">
                 <constraints>
                   <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -695,12 +687,22 @@
                   <text value="保存"/>
                 </properties>
               </component>
-              <component id="67ec3" class="javax.swing.JButton" default-binding="true">
+              <component id="67ec3" class="javax.swing.JButton" binding="deleteDisease">
                 <constraints>
                   <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="删除"/>
+                </properties>
+              </component>
+              <component id="82dbd" class="javax.swing.JList" binding="diseasesSearchResults">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="5" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <model/>
                 </properties>
               </component>
             </children>
