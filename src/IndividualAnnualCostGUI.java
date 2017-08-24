@@ -8,7 +8,15 @@ public class IndividualAnnualCostGUI {
     private JButton inquirePerson;
     private JButton inquireTreatment;
     private JList treatmentList;
-    private JTextField textField2;
+    private JTextField 年度累计报销次数TextField;
+    private JTabbedPane tabbedPane1;
+    private JTextField unitCoding;
+    private JTextField unitName;
+    private JTextField unitAddress;
+    private JTextField unitZipCode;
+    private JTextField unitTel;
+    private JComboBox unitType;
+    private JPanel prescription;
 
     public IndividualAnnualCostGUI() {
         inquirePerson.addMouseListener(new MouseAdapter() {

@@ -12,16 +12,12 @@ public class MedicalTreatmentApprovalGUI {
     private JTextField textField1;
     private JComboBox comboBox1;
     private JPanel mainPanel;
-
-    public MedicalTreatmentApprovalGUI() {
-        inquire.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);// 查询 按钮被按下
-                BasicInfoGUI.main(new String [10]);
-            }
-        });
-    }
+    private JTextField unitCoding;
+    private JTextField unitName;
+    private JTextField unitAddress;
+    private JTextField unitZipCode;
+    private JTextField unitTel;
+    private JComboBox unitType;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("医疗待遇审批");

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -9,6 +10,9 @@ public class GUIHome {
     private JButton IntegratedQuery;
     private JButton BasicInfo;
     private JButton CenterReimbursement;
+    private JTextField textField2;
+    private JButton login;
+    private JPasswordField passwordField1;
 
     public GUIHome() {
         BasicMedicalInformation.addMouseListener(new MouseAdapter() {
@@ -45,6 +49,18 @@ public class GUIHome {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);// 医保中心报销 按钮被按下
                 CenterReimbursementGUI.main(new String[10]);
+            }
+        });
+
+        login.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);// 登录按钮被按下
+                BasicMedicalInformation.setEnabled(true);
+                medicalTreatmentApproval.setEnabled(true);
+                CenterReimbursement.setEnabled(true);
+                IntegratedQuery.setEnabled(true);
+                BasicInfo.setEnabled(true);
             }
         });
     }
