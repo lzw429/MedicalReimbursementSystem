@@ -18,25 +18,6 @@ public class IndividualAnnualCostGUI {
     private JComboBox unitType;
     private JPanel prescription;
 
-    public IndividualAnnualCostGUI() {
-        inquirePerson.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);// 查询个人信息 按钮被按下
-                BasicInfoGUI.main(new String[10]);
-            }
-        });
-
-        treatmentList.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                if (e.getClickCount() == 2)//双击单条病人就诊资料信息数据，查看处方明细信息
-                    PrescriptionGUI.main(new String[10]);
-            }
-        });
-    }
-
     public static void main(String[] args) {
         JFrame frame = new JFrame("医疗人员费用查询");
         frame.setContentPane(new IndividualAnnualCostGUI().mainPanel);
