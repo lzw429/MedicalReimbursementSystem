@@ -583,9 +583,9 @@ public class BasicMedicalInformationGUI {
                         e1.printStackTrace();
                         JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
                     }
-                    if (readFlag) {
+                    if (readFlag)
                         InstitutionToGUI(data);
-                    } else // if(!readFlag)
+                    else // if(!readFlag)
                     {
                         JOptionPane.showMessageDialog(null, "未找到该机构信息", "警告", JOptionPane.WARNING_MESSAGE);
                         initInstitution();
@@ -766,6 +766,14 @@ public class BasicMedicalInformationGUI {
             }
         });
 
+        resetInstitution.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                initInstitution();
+                institutionCoding.setText("");
+            }
+        });
     }
 
     public boolean isInstitutionCompleted() {
@@ -871,7 +879,6 @@ public class BasicMedicalInformationGUI {
     }
 
     public void initDisease() {
-        diseasesCoding.setText("");
         diseasesName.setText("");
         diseaseReimbursementSigns.setSelectedIndex(0);
         diseasesCategory.setSelectedIndex(0);
@@ -913,7 +920,6 @@ public class BasicMedicalInformationGUI {
     }
 
     public void initInstitution() {
-        institutionCoding.setText("");
         institutionName.setText("");
         institutionGrade.setSelectedIndex(0);
         institutionType.setSelectedIndex(0);
