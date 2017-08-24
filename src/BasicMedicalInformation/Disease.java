@@ -42,11 +42,11 @@ public class Disease {
         this.reimbursementSigns = reimbursementSigns;
     }
 
-    public String getRemarks() {
+    public String getRemark() {
         return remarks;
     }
 
-    public void setRemarks(String remarks) {
+    public void setRemark(String remarks) {
         this.remarks = remarks;
     }
 

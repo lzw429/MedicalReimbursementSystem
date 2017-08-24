@@ -1,6 +1,7 @@
 import BasicMedicalInformation.Disease;
 import BasicMedicalInformation.Institution;
 import BasicMedicalInformation.Medicine;
+import BasicMedicalInformation.Treatment;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -31,7 +32,7 @@ public class BasicMedicalInformationGUI {
     private JComboBox chargeCategory;
     private JComboBox prescriptionMark;
     private JComboBox hospitalPreparationSigns;
-    private JComboBox needApproval;
+    private JComboBox medicineNeedApproval;
     private JComboBox hospitalGrade;
     private JComboBox feeLevel;
     private JTextField dosageForm;
@@ -41,15 +42,15 @@ public class BasicMedicalInformationGUI {
     private JTextField specification;
     private JTextField limitDays;
     private JTextField tradeName;
-    private JTextField factory;
+    private JTextField medicineFactory;
     private JTextField ChineseMedicineProspectiveWord;
-    private JTextField remarks;
+    private JTextField medicineRemark;
     private JTextField nationalCatelogCode;
-    private JTextField limitUsage;
+    private JTextField medicineLimitUsage;
     private JTextField origin;
     private JButton resetMedicine;
 
-    private JList medicineSearchResults;
+    private JList medicineSearchResult;
     private DefaultListModel medicineListModel;
 
     private JTextField diseasesCoding;
@@ -84,12 +85,30 @@ public class BasicMedicalInformationGUI {
     private JButton deleteInstitution;
     private JButton resetInstitution;
     private JList institutionSearchResults;
+    private JTextField treatmentCoding;
+    private JComboBox treatmentChargeCategory;
+    private JButton inquireTreatment;
+    private JButton addTreatment;
+    private JButton saveTreatment;
+    private JButton deleteTreatment;
+    private JButton resetTreatment;
+    private JList treatmentSearchResult;
+    private JTextField treatmentName;
+    private JComboBox treatmentFeeLevel;
+    private JComboBox treatmentHospitalGrade;
+    private JComboBox treatmentNeedApproval;
+    private JTextField treatmentUnit;
+    private JTextField treatmentFactory;
+    private JTextField treatmentRemark;
+    private JTextField treatmentRestriction;
 
     private DefaultListModel institutionListModel;
 
     private boolean isMedicineInquired = false;
     private boolean isDiseaseInquired = false;
     private boolean isInstitutionInquired = false;
+    private DefaultListModel treatmentListModel;
+    private boolean isTreatmentInquired = false;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("医疗基本信息维护");
@@ -108,7 +127,7 @@ public class BasicMedicalInformationGUI {
         dosageUnit.setText("");
         maximumPrice.setText("");
         hospitalPreparationSigns.setSelectedIndex(0);
-        needApproval.setSelectedIndex(0);
+        medicineNeedApproval.setSelectedIndex(0);
         hospitalGrade.setSelectedIndex(0);
         dosageForm.setText("");
         frequency.setText("");
@@ -117,16 +136,16 @@ public class BasicMedicalInformationGUI {
         specification.setText("");
         limitDays.setText("");
         tradeName.setText("");
-        factory.setText("");
+        medicineFactory.setText("");
         ChineseMedicineProspectiveWord.setText("");
-        remarks.setText("");
+        medicineRemark.setText("");
         nationalCatelogCode.setText("");
-        limitUsage.setText("");
+        medicineLimitUsage.setText("");
         origin.setText("");
 
         isMedicineInquired = false;
 
-        medicineSearchResults.setModel(new DefaultListModel());
+        medicineSearchResult.setModel(new DefaultListModel());
     }
 
     public BasicMedicalInformationGUI() {
@@ -170,7 +189,7 @@ public class BasicMedicalInformationGUI {
                     }
                     String line;
                     medicineListModel = new DefaultListModel();
-                    medicineSearchResults.setModel(new DefaultListModel<>());
+                    medicineSearchResult.setModel(new DefaultListModel<>());
                     try {
                         while ((line = reader.readLine()) != null) {
                             item = line.split(",");
@@ -180,7 +199,7 @@ public class BasicMedicalInformationGUI {
                                 medicine.readCSV(item[0]);
                                 // 展示到界面右侧列表
                                 medicineListModel.addElement(medicine);
-                                medicineSearchResults.setModel(medicineListModel);
+                                medicineSearchResult.setModel(medicineListModel);
                             }
                         }
                         reader.close();
@@ -216,7 +235,7 @@ public class BasicMedicalInformationGUI {
                         } else {
                             isMedicineInquired = true;
                             JOptionPane.showMessageDialog(null, "添加药品信息成功", "成功", JOptionPane.INFORMATION_MESSAGE);
-                            medicineSearchResults.setModel(new DefaultListModel());
+                            medicineSearchResult.setModel(new DefaultListModel());
                         }
                     } catch (NumberFormatException e1) {
                         JOptionPane.showMessageDialog(null, "输入的数字格式有误", "警告", JOptionPane.WARNING_MESSAGE);
@@ -263,7 +282,7 @@ public class BasicMedicalInformationGUI {
 
                             data.writeCSV();
                             isMedicineInquired = true;
-                            medicineSearchResults.setModel(new DefaultListModel());
+                            medicineSearchResult.setModel(new DefaultListModel());
                             JOptionPane.showMessageDialog(null, "保存成功", "成功", JOptionPane.INFORMATION_MESSAGE);
                         }
                     } catch (IOException e1) {
@@ -344,12 +363,12 @@ public class BasicMedicalInformationGUI {
             }
         });
 
-        medicineSearchResults.addListSelectionListener(new ListSelectionListener() {
+        medicineSearchResult.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) // 列表元素被选中
             {
                 Medicine data;
-                if ((data = (Medicine) medicineSearchResults.getSelectedValue()) != null)
+                if ((data = (Medicine) medicineSearchResult.getSelectedValue()) != null)
                     MedicineToGUI(data);
             }
         });
@@ -774,10 +793,191 @@ public class BasicMedicalInformationGUI {
                 institutionCoding.setText("");
             }
         });
+
+        inquireTreatment.addMouseListener(new MouseAdapter() {//查询诊疗项目 按钮
+            private boolean readFlag = false;
+
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);  // 查询诊疗项目 按钮被按下
+                // 通过 项目编码 或 项目名称 查询
+                if (!treatmentCoding.getText().equals(""))//如果编码非空
+                {
+                    Treatment data = new Treatment();
+                    try {
+                        readFlag = data.readCSV(treatmentCoding.getText());
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                    if (readFlag) {
+                        TreatmentToGUI(data);
+                    } else // if (!readFlag)
+                    {
+                        JOptionPane.showMessageDialog(null, "未找到该药品", "警告", JOptionPane.WARNING_MESSAGE);
+                        initTreatment();
+                    }
+                } else // 项目编码为空，尝试通过项目名称查找
+                {
+                    // 逐条读取，判断用户输入的名称是不是其子串，如果是则用toString将其展示在列表上；当选中列表的某一项时，执行readCSV
+                    String item[] = new String[15];
+                    BufferedReader reader = null;
+                    try {
+                        reader = new BufferedReader(new FileReader("data/Treatment.csv"));
+                        reader.readLine();//第一行是标题
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                    String line;
+                    treatmentListModel = new DefaultListModel();
+                    treatmentSearchResult.setModel(new DefaultListModel<>());
+                    try {
+                        while ((line = reader.readLine()) != null) {
+                            item = line.split(",");
+                            if (item[1].contains(treatmentName.getText()))//判断文本框中的内容是否是item[1]的子串
+                            {
+                                Treatment treatment = new Treatment();
+                                treatment.readCSV(item[0]);
+                                // 展示到界面右侧列表
+                                treatmentListModel.addElement(treatment);
+                                treatmentSearchResult.setModel(treatmentListModel);
+                            }
+                        }
+                        reader.close();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        });
+
+        addTreatment.addMouseListener(new MouseAdapter() {
+            boolean writeFlag = true;
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                super.mouseClicked(e);  // 添加诊疗项目 按钮被按下
+
+                if (isTreatmentCompleted()) // 如果信息完整
+                {
+                    try {
+                        Treatment data = new Treatment();
+                        GUIToTreatment(data);
+                        try {
+                            writeFlag = data.writeCSV();
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                        }
+                        if (!writeFlag) {// 在writeCSV方法中，coding已存在的药品不会被添加
+                            JOptionPane.showMessageDialog(null, "该药品已存在", "警告", JOptionPane.WARNING_MESSAGE);
+                        } else {
+                            isTreatmentInquired = true;
+                            JOptionPane.showMessageDialog(null, "添加药品信息成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+                            treatmentSearchResult.setModel(new DefaultListModel());
+                        }
+                    } catch (NumberFormatException e1) {
+                        JOptionPane.showMessageDialog(null, "输入的数字格式有误", "警告", JOptionPane.WARNING_MESSAGE);
+                    }
+                } else  // 如果信息不完整
+                {
+                    JOptionPane.showMessageDialog(null, "请输入完整的信息", "警告", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        treatmentCoding.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            // 诊疗项目编码文本框 内容被修改
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isTreatmentInquired = false;
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isTreatmentInquired = false;
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isTreatmentInquired = false;
+            }
+        });
+
+        treatmentSearchResult.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) // 列表元素被选中
+            {
+                Treatment data;
+                if ((data = (Treatment) treatmentSearchResult.getSelectedValue()) != null)
+                    TreatmentToGUI(data);
+            }
+        });
+    }
+
+    private void initTreatment() {
+        treatmentCoding.setText("");
+        treatmentName.setText("");
+        treatmentFeeLevel.setSelectedIndex(0);
+        treatmentChargeCategory.setSelectedIndex(0);
+        treatmentHospitalGrade.setSelectedIndex(0);
+        treatmentNeedApproval.setSelectedIndex(0);
+        treatmentUnit.setText("");
+        treatmentFactory.setText("");
+        treatmentRemark.setText("");
+        treatmentRestriction.setText("");
+
+        isTreatmentInquired = false;
+
+        treatmentSearchResult.setModel(new DefaultListModel());
+    }
+
+    public boolean isTreatmentCompleted() {
+        if (treatmentCoding.equals("") || treatmentName.equals("") || treatmentFeeLevel.getSelectedIndex() == 0 || treatmentChargeCategory.getSelectedIndex() == 0 || treatmentHospitalGrade.getSelectedIndex() == 0 || treatmentNeedApproval.getSelectedIndex() == 0 || treatmentUnit.equals("") || treatmentFactory.equals("") || treatmentRemark.equals("") || treatmentRestriction.equals(""))
+            return false;
+        return true;
+    }
+
+    public void TreatmentToGUI(Treatment data) {
+        treatmentCoding.setText(data.getCoding());
+        treatmentName.setText(data.getName());
+        treatmentFeeLevel.setSelectedIndex(data.getChargeCategory());
+        treatmentChargeCategory.setSelectedIndex(data.getFeeLevel());
+        treatmentHospitalGrade.setSelectedIndex(data.getHospitalGrade());
+        if (data.isNeedApproval()) treatmentNeedApproval.setSelectedIndex(1);
+        else
+            treatmentNeedApproval.setSelectedIndex(2);
+        treatmentUnit.setText(data.getUnit());
+        treatmentFactory.setText(data.getManufacturer());
+        treatmentRemark.setText(data.getRemarks());
+        treatmentRestriction.setText(data.getRestrictions());
+
+        isTreatmentInquired = true;
+    }
+
+    public void GUIToTreatment(Treatment data) {
+        data.setCoding(treatmentCoding.getText());
+        data.setName(treatmentName.getText());
+        data.setChargeCategory(treatmentFeeLevel.getSelectedIndex());
+        data.setFeeLevel(treatmentChargeCategory.getSelectedIndex());
+        data.setHospitalGrade(treatmentHospitalGrade.getSelectedIndex());
+        if (treatmentNeedApproval.getSelectedIndex() == 1)
+            data.setNeedApproval(true);
+        else if (treatmentNeedApproval.getSelectedIndex() == 2)
+            data.setNeedApproval(false);
+        data.setUnit(treatmentUnit.getText());
+        data.setManufacturer(treatmentFactory.getText());
+        data.setRemarks(treatmentRemark.getText());
+        data.setRestrictions(treatmentRestriction.getText());
     }
 
     public boolean isInstitutionCompleted() {
-        if (institutionCoding.equals("") || institutionName.equals("") || institutionGrade.getSelectedIndex() == 0 || institutionType.getSelectedIndex() == 0 || institutionZipCode.equals("") || LRName.equals("") || LRTel.equals("") || contactPersonName.equals("") || contactTel.equals("") || contactPersonTel.equals("") || address.equals("") || remarks.equals(""))
+        if (institutionCoding.equals("") || institutionName.equals("") || institutionGrade.getSelectedIndex() == 0 || institutionType.getSelectedIndex() == 0 || institutionZipCode.equals("") || LRName.equals("") || LRTel.equals("") || contactPersonName.equals("") || contactTel.equals("") || contactPersonTel.equals("") || address.equals("") || institutionRemark.equals(""))
             return false;
         return true;
     }
@@ -795,8 +995,8 @@ public class BasicMedicalInformationGUI {
             hospitalPreparationSigns.setSelectedIndex(1);
         else hospitalPreparationSigns.setSelectedIndex(2);
         if (data.isNeedApproval())
-            needApproval.setSelectedIndex(1);
-        else needApproval.setSelectedIndex(2);
+            medicineNeedApproval.setSelectedIndex(1);
+        else medicineNeedApproval.setSelectedIndex(2);
         hospitalGrade.setSelectedIndex(data.getHospitalGrade() + 1);
         dosageForm.setText(data.getDosageForm());
         frequency.setText(data.getFrequency());
@@ -805,11 +1005,11 @@ public class BasicMedicalInformationGUI {
         specification.setText(data.getSpecification());
         limitDays.setText(data.getLimitDays());
         tradeName.setText(data.getTradeName());
-        factory.setText(data.getFactory());
+        medicineFactory.setText(data.getFactory());
         ChineseMedicineProspectiveWord.setText(data.getChineseMedicineProspectiveWord());
-        remarks.setText(data.getRemarks());
+        medicineRemark.setText(data.getRemark());
         nationalCatelogCode.setText(data.getNationalCatelogCode());
-        limitUsage.setText(data.getLimitUsage());
+        medicineLimitUsage.setText(data.getLimitUsage());
         origin.setText(data.getOrigin());
 
         isMedicineInquired = true;
@@ -828,9 +1028,9 @@ public class BasicMedicalInformationGUI {
             data.setHospitalPreparationSigns(true);
         else if (hospitalPreparationSigns.getSelectedIndex() == 2)
             data.setHospitalPreparationSigns(false);
-        if (needApproval.getSelectedIndex() == 1)
+        if (medicineNeedApproval.getSelectedIndex() == 1)
             data.setNeedApproval(true);
-        else if (needApproval.getSelectedIndex() == 2)
+        else if (medicineNeedApproval.getSelectedIndex() == 2)
             data.setNeedApproval(false);
         data.setHospitalGrade(hospitalGrade.getSelectedIndex() - 1);
         data.setDosageForm(dosageForm.getText());
@@ -840,16 +1040,16 @@ public class BasicMedicalInformationGUI {
         data.setSpecification(specification.getText());
         data.setLimitDays(limitDays.getText());
         data.setTradeName(tradeName.getText());
-        data.setFactory(factory.getText());
+        data.setFactory(medicineFactory.getText());
         data.setChineseMedicineProspectiveWord(ChineseMedicineProspectiveWord.getText());
-        data.setRemarks(remarks.getText());
+        data.setRemark(medicineRemark.getText());
         data.setNationalCatelogCode(nationalCatelogCode.getText());
-        data.setLimitUsage(limitUsage.getText());
+        data.setLimitUsage(medicineLimitUsage.getText());
         data.setOrigin(origin.getText());
     }
 
     public boolean isMedicineCompleted() {
-        if (medicineCoding.getText().equals("") || ChineseName.getText().equals("") || EnglishName.getText().equals("") || dosageUnit.getText().equals("") || maximumPrice.getText().equals("") || chargeCategory.getSelectedIndex() == 0 || prescriptionMark.getSelectedIndex() == 0 || hospitalPreparationSigns.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || needApproval.getSelectedIndex() == 0 || feeLevel.getSelectedIndex() == 0 || dosageForm.getText().equals("") || frequency.getText().equals("") || unit.getText().equals("") || usage.getText().equals("") || specification.getText().equals("") || limitDays.getText().equals("") || tradeName.getText().equals("") || factory.getText().equals("") || ChineseMedicineProspectiveWord.getText().equals("") || remarks.getText().equals("") || nationalCatelogCode.getText().equals("") || limitUsage.getText().equals("") || origin.getText().equals("") || hospitalGrade.getSelectedIndex() == 0)
+        if (medicineCoding.getText().equals("") || ChineseName.getText().equals("") || EnglishName.getText().equals("") || dosageUnit.getText().equals("") || maximumPrice.getText().equals("") || chargeCategory.getSelectedIndex() == 0 || prescriptionMark.getSelectedIndex() == 0 || hospitalPreparationSigns.getSelectedIndex() == 0 || medicineNeedApproval.getSelectedIndex() == 0 || medicineNeedApproval.getSelectedIndex() == 0 || feeLevel.getSelectedIndex() == 0 || dosageForm.getText().equals("") || frequency.getText().equals("") || unit.getText().equals("") || usage.getText().equals("") || specification.getText().equals("") || limitDays.getText().equals("") || tradeName.getText().equals("") || medicineFactory.getText().equals("") || ChineseMedicineProspectiveWord.getText().equals("") || medicineRemark.getText().equals("") || nationalCatelogCode.getText().equals("") || medicineLimitUsage.getText().equals("") || origin.getText().equals("") || hospitalGrade.getSelectedIndex() == 0)
             return false;
         return true;
     }
@@ -859,7 +1059,7 @@ public class BasicMedicalInformationGUI {
         diseasesName.setText(data.getName());
         diseasesCategory.setSelectedIndex(data.getCategory());
         diseaseReimbursementSigns.setSelectedIndex(data.getReimbursementSigns());
-        diseasesRemark.setText(data.getRemarks());
+        diseasesRemark.setText(data.getRemark());
 
         isDiseaseInquired = true;
     }
@@ -869,7 +1069,7 @@ public class BasicMedicalInformationGUI {
         data.setName(diseasesName.getText());
         data.setCategory(diseasesCategory.getSelectedIndex());
         data.setReimbursementSigns(diseaseReimbursementSigns.getSelectedIndex());
-        data.setRemarks(diseasesRemark.getText());
+        data.setRemark(diseasesRemark.getText());
     }
 
     public boolean isDiseaseCompleted() {
@@ -901,7 +1101,9 @@ public class BasicMedicalInformationGUI {
         contactTel.setText(data.getContactTel());
         contactPersonTel.setText(data.getContactPersonTel());
         address.setText(data.getAddress());
-        remarks.setText(data.getRemarks());
+        institutionRemark.setText(data.getRemark());
+
+        isInstitutionInquired = true;
     }
 
     public void GUIToInstitution(Institution data) {
@@ -916,7 +1118,7 @@ public class BasicMedicalInformationGUI {
         data.setContactTel(contactTel.getText());
         data.setContactPersonTel(contactPersonTel.getText());
         data.setAddress(address.getText());
-        data.setRemarks(remarks.getText());
+        data.setRemark(institutionRemark.getText());
     }
 
     public void initInstitution() {
@@ -930,6 +1132,11 @@ public class BasicMedicalInformationGUI {
         contactTel.setText("");
         contactPersonTel.setText("");
         address.setText("");
-        remarks.setText("");
+        institutionRemark.setText("");
+
+        isInstitutionInquired = false;
+
+        institutionSearchResults.setModel(new DefaultListModel());
     }
+
 }
