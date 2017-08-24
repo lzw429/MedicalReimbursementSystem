@@ -476,7 +476,7 @@ public class BasicMedicalInformationGUI {
                     Disease findCSV = new Disease();
                     try {
                         if (!findCSV.readCSV(diseasesCoding.getText())) {
-                            JOptionPane.showMessageDialog(null, "未找到该药品", "错误", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "未找到该病种信息", "错误", JOptionPane.ERROR_MESSAGE);
                         } else {
                             File file = new File("data/Disease.csv");
                             File temp = new File("data/Disease.temp.csv");
@@ -813,7 +813,7 @@ public class BasicMedicalInformationGUI {
                         TreatmentToGUI(data);
                     } else // if (!readFlag)
                     {
-                        JOptionPane.showMessageDialog(null, "未找到该药品", "警告", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "未找到该诊疗项目", "警告", JOptionPane.WARNING_MESSAGE);
                         initTreatment();
                     }
                 } else // 项目编码为空，尝试通过项目名称查找
@@ -891,6 +891,105 @@ public class BasicMedicalInformationGUI {
             }
         });
 
+        saveTreatment.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);  // 保存诊疗项目 按钮被按下
+                // 先判断数据是否完整，如果完整，再判断该编码是否存在CSV中，如果存在则删除原数据、添加新数据
+                if (!isTreatmentCompleted()) //判断信息是否完整
+                {
+                    JOptionPane.showMessageDialog(null, "请输入完整的信息", "警告", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    Treatment data = new Treatment();
+                    GUIToTreatment(data);
+                    Treatment findCSV = new Treatment();
+                    try {
+                        if (!findCSV.readCSV(treatmentCoding.getText())) //判断当前编码是否存在于CSV
+                        {
+                            JOptionPane.showMessageDialog(null, "未找到该诊疗项目", "错误", JOptionPane.ERROR_MESSAGE);
+                        } else { //删除原数据、添加新数据
+                            File file = new File("data/Treatment.csv");
+                            File temp = new File("data/Treatment.temp.csv");
+                            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temp)));
+                            String line;
+                            String[] item;
+                            while ((line = reader.readLine()) != null) {
+                                item = line.split(",");
+                                if (!item[0].equals(treatmentCoding.getText()))
+                                    writer.write(line + "\n");
+                            }
+                            reader.close();
+                            writer.close();
+                            file.delete();
+                            temp.renameTo(file);
+
+                            data.writeCSV();
+                            isTreatmentInquired = true;
+                            treatmentSearchResult.setModel(new DefaultListModel());
+                            JOptionPane.showMessageDialog(null, "保存成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+        });
+
+        deleteTreatment.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);  // 删除诊疗项目 按钮被按下
+                //readCSV，先查询，后删除
+                if (!isTreatmentInquired)
+                    JOptionPane.showMessageDialog(null, "请指定诊疗项目", "警告", JOptionPane.WARNING_MESSAGE);
+                else // if(isTreatmentInquired)
+                {
+                    if (JOptionPane.showConfirmDialog(null, "确定删除？", "确认", JOptionPane.YES_NO_OPTION) == 0)//用户点击 确定
+                    {
+                        File file = new File("data/Treatment.csv");
+                        File temp = new File("data/Treatment.temp.csv");
+                        try {
+                            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(temp)));
+                            String line;
+                            String[] item;
+                            while ((line = reader.readLine()) != null) {
+                                item = line.split(",");
+                                if (!item[0].equals(treatmentCoding.getText()))
+                                    writer.write(line + "\n");
+                            }
+                            reader.close();
+                            writer.close();
+                            file.delete();
+                            temp.renameTo(file);
+
+                            isTreatmentInquired = false;
+                            treatmentCoding.setText("");
+                            initTreatment();
+                            JOptionPane.showMessageDialog(null, "删除成功", "成功", JOptionPane.INFORMATION_MESSAGE);
+                        } catch (FileNotFoundException e1) {
+                            JOptionPane.showMessageDialog(null, "文件未找到", "错误", JOptionPane.ERROR_MESSAGE);
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                            JOptionPane.showMessageDialog(null, "文件读写错误", "错误", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    //若用户点击“取消”，无需任何动作
+                }
+            }
+        });
+
+        resetTreatment.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                initTreatment();
+                treatmentCoding.setText("");
+            }
+        });
+
         treatmentCoding.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             // 诊疗项目编码文本框 内容被修改
             @Override
@@ -946,8 +1045,8 @@ public class BasicMedicalInformationGUI {
     public void TreatmentToGUI(Treatment data) {
         treatmentCoding.setText(data.getCoding());
         treatmentName.setText(data.getName());
-        treatmentFeeLevel.setSelectedIndex(data.getChargeCategory());
-        treatmentChargeCategory.setSelectedIndex(data.getFeeLevel());
+        treatmentChargeCategory.setSelectedIndex(data.getChargeCategory());
+        treatmentFeeLevel.setSelectedIndex(data.getFeeLevel());
         treatmentHospitalGrade.setSelectedIndex(data.getHospitalGrade());
         if (data.isNeedApproval()) treatmentNeedApproval.setSelectedIndex(1);
         else
@@ -963,8 +1062,8 @@ public class BasicMedicalInformationGUI {
     public void GUIToTreatment(Treatment data) {
         data.setCoding(treatmentCoding.getText());
         data.setName(treatmentName.getText());
-        data.setChargeCategory(treatmentFeeLevel.getSelectedIndex());
-        data.setFeeLevel(treatmentChargeCategory.getSelectedIndex());
+        data.setChargeCategory(treatmentChargeCategory.getSelectedIndex());
+        data.setFeeLevel(treatmentFeeLevel.getSelectedIndex());
         data.setHospitalGrade(treatmentHospitalGrade.getSelectedIndex());
         if (treatmentNeedApproval.getSelectedIndex() == 1)
             data.setNeedApproval(true);

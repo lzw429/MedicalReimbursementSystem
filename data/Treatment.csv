@@ -1,1 +1,6 @@
 coding,name,chargeCategory,feeLevel,hospitalGrade,needApproval,unit,manufacturer,remarks,restrictions
+0,输氧,1,1,1,1,单位1,生产商1,备注1,无限制
+1,诊查,2,1,1,1,单位2,生产商2,备注2,无限制
+2,输血费,8,1,1,1,单位3,生产商3,备注3,无限制
+3,项目四,6,1,4,1,单位4,生产商4,备注4,无限制
+4,项目五,7,1,4,1,单位4,生产商4,备注4,无限制

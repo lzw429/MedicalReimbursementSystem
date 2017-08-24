@@ -1128,7 +1128,7 @@
                 <properties>
                   <model>
                     <item value=""/>
-                    <item value="诊查费   "/>
+                    <item value="诊查费"/>
                     <item value="检查费"/>
                     <item value="护理费"/>
                     <item value="特检费"/>
