@@ -1037,7 +1037,7 @@ public class BasicMedicalInformationGUI {
     }
 
     public boolean isTreatmentCompleted() {
-        if (treatmentCoding.equals("") || treatmentName.equals("") || treatmentFeeLevel.getSelectedIndex() == 0 || treatmentChargeCategory.getSelectedIndex() == 0 || treatmentHospitalGrade.getSelectedIndex() == 0 || treatmentNeedApproval.getSelectedIndex() == 0 || treatmentUnit.equals("") || treatmentFactory.equals("") || treatmentRemark.equals("") || treatmentRestriction.equals(""))
+        if (treatmentCoding.getText().equals("") || treatmentName.getText().equals("") || treatmentFeeLevel.getSelectedIndex() == 0 || treatmentChargeCategory.getSelectedIndex() == 0 || treatmentHospitalGrade.getSelectedIndex() == 0 || treatmentNeedApproval.getSelectedIndex() == 0 || treatmentUnit.getText().equals("") || treatmentFactory.getText().equals("") || treatmentRemark.getText().equals("") || treatmentRestriction.getText().equals(""))
             return false;
         return true;
     }
@@ -1076,7 +1076,7 @@ public class BasicMedicalInformationGUI {
     }
 
     public boolean isInstitutionCompleted() {
-        if (institutionCoding.equals("") || institutionName.equals("") || institutionGrade.getSelectedIndex() == 0 || institutionType.getSelectedIndex() == 0 || institutionZipCode.equals("") || LRName.equals("") || LRTel.equals("") || contactPersonName.equals("") || contactTel.equals("") || contactPersonTel.equals("") || address.equals("") || institutionRemark.equals(""))
+        if (institutionCoding.getText().equals("") || institutionName.getText().equals("") || institutionGrade.getSelectedIndex() == 0 || institutionType.getSelectedIndex() == 0 || institutionZipCode.getText().equals("") || LRName.getText().equals("") || LRTel.getText().equals("") || contactPersonName.getText().equals("") || contactTel.getText().equals("") || contactPersonTel.getText().equals("") || address.getText().equals("") || institutionRemark.getText().equals(""))
             return false;
         return true;
     }
@@ -1172,7 +1172,7 @@ public class BasicMedicalInformationGUI {
     }
 
     public boolean isDiseaseCompleted() {
-        if (diseasesCoding.getText().equals("") || diseasesName.getText().equals("") || diseasesCategory.getSelectedIndex() == 0 || diseaseReimbursementSigns.getSelectedIndex() == 0 || diseasesRemark.equals(""))
+        if (diseasesCoding.getText().equals("") || diseasesName.getText().equals("") || diseasesCategory.getSelectedIndex() == 0 || diseaseReimbursementSigns.getSelectedIndex() == 0 || diseasesRemark.getText().equals(""))
             return false;
         return true;
     }
