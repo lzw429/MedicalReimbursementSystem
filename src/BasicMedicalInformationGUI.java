@@ -368,7 +368,7 @@ public class BasicMedicalInformationGUI {
             public void valueChanged(ListSelectionEvent e) // 列表元素被选中
             {
                 Medicine data;
-                if ((data = (Medicine) medicineSearchResult.getSelectedValue()) != null)
+                if ((data = (Medicine) medicineSearchResult.getSelectedValue()) != null)// 小心空指针异常
                     MedicineToGUI(data);
             }
         });
